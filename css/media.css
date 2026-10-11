@@ -1,0 +1,220 @@
+/* =========================================================
+   PaperMart — responsive overrides ONLY
+   Desktop (1920px Figma layout) lives in style.css and is not changed here.
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   Laptop: ≤1919px
+   The whole 1920px design scaled proportionally × 0.75.
+   Every fixed px value from style.css is repeated here × 0.75.
+   Hairline borders (1px / 1.5px) and focus outlines stay as they are.
+   --------------------------------------------------------- */
+@media (max-width: 1919px) {
+
+  /* ---------- Tokens ---------- */
+  :root {
+    --container: 1200px;   /* 1600 */
+    --radius-sm: 9px;      /* 12 */
+    --radius-md: 15px;     /* 20 */
+    --radius-lg: 18px;     /* 24 */
+    --header-h: 72px;      /* 96 */
+    --shadow-icon: 0 7.5px 18px rgba(3, 15, 51, .45); /* 0 10 24 */
+  }
+
+  /* ---------- Base ---------- */
+  body { font-size: 12px; }
+  .icon { --icon-size: 18px; }
+
+  /* ---------- Buttons ---------- */
+  .btn { gap: 7.5px; height: 37.5px; padding: 0 18px; font-size: 12px; }
+  .btn .icon { --icon-size: 13.5px; }
+  .btn:hover .icon--arrow-right { transform: translateX(2.25px); }
+  .btn:hover .icon--arrow-down { transform: translateY(2.25px); }
+  .btn--md { height: 39px; padding: 0 21px; }
+  .btn--lg { height: 45px; padding: 0 30px; gap: 9px; font-size: 12.75px; }
+  .btn--lg .icon { --icon-size: 15px; }
+
+  .link-arrow { gap: 6px; font-size: 11.25px; }
+  .link-arrow .icon { --icon-size: 13.5px; }
+  .link-arrow:hover .icon { transform: translateX(2.25px); }
+
+  /* ---------- Header ---------- */
+  .header__logo img { width: 164.25px; height: 39px; }
+
+  .nav__list { gap: 33px; }
+  .nav__link { padding-bottom: 8.25px; margin-bottom: -8.25px; font-size: 11.25px; line-height: 15px; }
+  .nav__link::after { width: 18px; height: 2.25px; border-radius: 1.5px; }
+
+  .header__actions { gap: 21px; }
+  .header__login { gap: 6px; font-size: 11.25px; line-height: 15px; }
+  .header__login .icon { --icon-size: 16.5px; }
+
+  .cart { gap: 9px; height: 36px; padding: 0 15px 0 12px; }
+  .cart__icon { width: 22.5px; height: 21px; }
+  .cart__icon .icon { top: 2.25px; }
+  .cart__badge {
+    top: -4.5px;
+    left: 12px;
+    min-width: 15px;
+    height: 15px;
+    padding: 0 3.75px;
+    border-radius: 7.5px;
+    font-size: 8.25px;
+  }
+  .cart__total { font-size: 12px; line-height: 16.5px; }
+
+  /* ---------- Hero ---------- */
+  .hero { padding: 30px 0; }
+  .hero__slider { height: 480px; }
+  .hero-slide { height: 480px; }
+
+  .hero-slide__content { left: 72px; }
+  .hero-slide__title { font-size: 48px; line-height: 54px; }
+  .hero-slide__text { margin-top: 15px; font-size: 16.5px; line-height: 22.5px; }
+  .hero-slide__points { gap: 21px; margin-top: 21px; }
+  .hero-slide__point { gap: 6px; font-size: 12.75px; line-height: 17.25px; }
+  .hero-slide__check { width: 18px; height: 18px; }
+  .hero-slide__check .icon { --icon-size: 10.5px; }
+  .hero-slide__btn { margin-top: 30px; height: 45px; padding: 0 24px; gap: 9px; font-size: 12.75px; }
+  .hero-slide__btn .icon { --icon-size: 15px; }
+
+  .slider-arrow { top: 219px; width: 42px; height: 42px; }
+  .slider-arrow .icon { --icon-size: 18px; }
+  .slider-arrow--prev { left: -21px; }
+  .slider-arrow--next { right: -21px; }
+
+  .hero__pagination { gap: 7.5px; height: 7.5px; margin-top: 21px; }
+  .hero__pagination .swiper-pagination-bullet { width: 7.5px; height: 7.5px; border-radius: 3.75px; }
+  .hero__pagination .swiper-pagination-bullet-active { width: 24px; }
+
+  /* ---------- Trust bar ---------- */
+  .trust { padding: 36px 0; }
+  .trust__list { min-height: 60px; }
+  .trust-item { gap: 15px; padding: 0 24px; }
+  .trust-item + .trust-item::before { height: 60px; }
+  .trust-item__icon { width: 54px; height: 54px; }
+  .trust-item__icon .icon { --icon-size: 25.5px; }
+  .trust-item__text { gap: 3px; }
+  .trust-item__title { font-size: 13.5px; line-height: 18px; }
+  .trust-item__desc { font-size: 11.25px; line-height: 15.75px; }
+
+  /* ---------- Section title ---------- */
+  .section-title { gap: 10.5px; max-width: 615px; }
+  .section-title__heading { font-size: 39px; line-height: 46.5px; }
+  .section-title__heading::after { width: 42px; height: 3px; margin-top: 10.5px; border-radius: 1.5px; }
+  .section-title__text { font-size: 15px; line-height: 24px; }
+
+  /* ---------- Catalog ---------- */
+  .catalog { padding: 48px 0 60px; background-size: 180px 180px; }
+  .catalog__body { gap: 36px; margin-top: 30px; }
+  .catalog__sidebar { gap: 18px; flex-basis: 240px; }
+  .catalog__products { gap: 21px; }
+
+  /* Filters */
+  .filters { padding: 21px 21px 9px; }
+  .filters__header { padding-bottom: 15px; }
+  .filters__title { gap: 7.5px; font-size: 16.5px; line-height: 22.5px; }
+  .filters__title .icon { --icon-size: 16.5px; }
+  .filters__clear { font-size: 11.25px; line-height: 15px; }
+  .filters__clear:hover { text-underline-offset: 2.25px; }
+
+  .filter-group { padding: 15px 0; }
+  .filter-group__toggle { font-size: 12.75px; line-height: 17.25px; }
+  .filter-group__toggle .icon { --icon-size: 15px; }
+  .filter-group__options { gap: 10.5px; padding-top: 12px; }
+
+  .checkbox { gap: 9px; }
+  .checkbox__box { width: 16.5px; height: 16.5px; border-radius: 4.5px; }
+  .checkbox__box::after { width: 10.5px; height: 10.5px; }
+  .checkbox__label { font-size: 12px; line-height: 16.5px; }
+  .checkbox__count { font-size: 10.5px; line-height: 14.25px; }
+
+  /* Sidebar cards */
+  .sidebar-card--help { gap: 9px; padding: 21px; }
+  .sidebar-card__icon { --icon-size: 21px; }
+  .sidebar-card__title { font-size: 13.5px; line-height: 18px; }
+  .sidebar-card__text { font-size: 11.25px; line-height: 17.25px; }
+
+  .delivery-card__head { gap: 7.5px; padding: 21px 21px 18px; }
+  .delivery-card__head-icon { --icon-size: 21px; }
+  .delivery-card__title { font-size: 14.25px; line-height: 18.75px; }
+  .delivery-card__text { font-size: 11.25px; line-height: 16.5px; }
+
+  .delivery-option { gap: 9px; padding: 18px 21px; }
+  .delivery-option__head { gap: 10.5px; }
+  .delivery-option__icon { width: 36px; height: 36px; }
+  .delivery-option__icon .icon { --icon-size: 16.5px; }
+  .delivery-option__title { font-size: 13.5px; line-height: 18.75px; }
+  .delivery-option__time { margin-top: 1.5px; font-size: 10.5px; line-height: 14.25px; }
+
+  .check-list { gap: 9px; }
+  .check-list li { gap: 7.5px; font-size: 11.25px; line-height: 15px; }
+  .check-list li::before { width: 12px; height: 12px; }
+
+  /* Toolbar */
+  .catalog__status { font-size: 12px; line-height: 16.5px; }
+  .sort { gap: 7.5px; height: 36px; padding: 0 12px 0 15px; }
+  .sort__label { font-size: 11.25px; line-height: 15px; }
+  .sort__select { margin-right: -21px; padding: 0 21px 0 0; font-size: 11.25px; }
+  .sort__chevron { --icon-size: 13.5px; }
+
+  /* Product grid & card */
+  .product-grid { gap: 21px; }
+  .product-card { min-height: 465px; }
+  .product-card:hover { transform: translateY(-1.5px); }
+  .product-card__media { flex-basis: 255px; height: 255px; }
+
+  .product-card__body { gap: 7.5px; padding: 18px; }
+  .product-card__title { min-height: 36px; font-size: 13.5px; line-height: 18px; }
+  .product-card__text { font-size: 11.25px; line-height: 17.25px; }
+  .product-card__delivery { gap: 4.5px; font-size: 9.75px; line-height: 13.5px; }
+  .product-card__delivery .icon { --icon-size: 12px; }
+  .product-card__custom-icon { --icon-size: 72px; }
+
+  .rating { height: 14.25px; font-size: 10.5px; line-height: 14.25px; }
+  .rating__stars {
+    width: 65.25px;
+    height: 11.25px;
+    background: linear-gradient(90deg, var(--c-star) calc(var(--rating, 0) * 13.5px), var(--c-star-off) 0);
+    -webkit-mask-size: 13.5px 11.25px;
+            mask-size: 13.5px 11.25px;
+  }
+  .rating__value { margin-left: 6px; }
+  .rating__count { margin-left: 3px; }
+
+  .price { gap: 4.5px; padding-top: 3px; }
+  .price__from, .price__currency { font-size: 10.5px; line-height: 14.25px; }
+  .price__value { font-size: 19.5px; line-height: 26.25px; }
+
+  .catalog__empty { padding: 30px; font-size: 12.75px; }
+  .catalog__more { padding-top: 24px; }
+
+  /* ---------- Footer ---------- */
+  .footer { padding: 72px 0 30px; }
+  .footer__top { gap: 42px; }
+  .footer__brand { gap: 18px; flex-basis: 315px; }
+  .footer__logo { width: 189.75px; height: 45px; }
+  .footer__tagline { font-size: 15px; line-height: 21px; }
+  .footer__about { max-width: 255px; font-size: 12px; line-height: 19.5px; }
+
+  .footer__col { gap: 27px; flex-basis: 195px; }
+  .footer__col--help { flex-basis: 255px; }
+  .footer__heading { font-size: 10.5px; line-height: 14.25px; }
+  .footer__links { gap: 12px; }
+  .footer__links a { font-size: 12px; line-height: 16.5px; }
+
+  .footer__contacts { gap: 12px; }
+  .footer__contacts li { gap: 9px; font-size: 12px; line-height: 16.5px; }
+  .footer__contacts .icon { --icon-size: 15px; }
+
+  .footer__bottom { gap: 18px; margin-top: 54px; padding-top: 24px; font-size: 10.5px; line-height: 14.25px; }
+
+  /* Quick enquiry form */
+  .enquiry { gap: 12px; }
+  .enquiry .footer__heading { margin-bottom: 15px; }
+  .enquiry__row { gap: 9px; }
+  .field__input { height: 39px; padding: 0 13.5px; font-size: 11.25px; }
+  .field__input--textarea { height: 78px; padding: 12px 13.5px; }
+  .field__error { margin-top: 4.5px; font-size: 9.75px; line-height: 12.75px; }
+  .enquiry__success { padding: 9px 12px; font-size: 11.25px; line-height: 15.75px; }
+}

@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PaperMart | Premium Grid &amp; Graph Paper Rolls, Delivered to Australia</title>
+  <meta name="description" content="British made grid and graph paper rolls, shipped directly to your door in Australia. Delivery included in every price.">
+
+  <link rel="preload" href="assets/fonts/nunito-sans-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/nunito-sans-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/images/hero-grid-papers.jpg" as="image">
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/vendor/swiper-bundle.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/media.css">
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header class="header">
+    <div class="header__inner container">
+      <a class="header__logo" href="index.html" aria-label="PaperMart home">
+        <img src="assets/images/logo-papermart.png" alt="PaperMart, www.papermart.au" width="219" height="52">
+      </a>
+
+      <nav class="nav" aria-label="Main navigation">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="gridcraft.html">GridCraft</a></li>
+          <li><a class="nav__link" href="specifications.html">Specifications</a></li>
+          <li><a class="nav__link" href="delivery.html">Delivery</a></li>
+          <li><a class="nav__link" href="faq.html">FAQ</a></li>
+          <li><a class="nav__link" href="contact.html">Contact us</a></li>
+        </ul>
+      </nav>
+
+      <div class="header__actions">
+        <a class="header__login" href="account.html">
+          <span class="icon icon--user" aria-hidden="true"></span>
+          Login
+        </a>
+        <a class="cart" href="cart.html" data-cart aria-label="Shopping cart">
+          <span class="cart__icon">
+            <span class="icon icon--cart" aria-hidden="true"></span>
+            <span class="cart__badge" data-cart-count>2</span>
+          </span>
+          <span class="cart__total" data-cart-total>$89.90 AUD</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============ HERO SLIDER ============ -->
+    <section class="hero" aria-label="Featured">
+      <div class="hero__inner container">
+        <div class="hero__slider swiper" data-hero-slider>
+          <div class="swiper-wrapper">
+
+            <div class="swiper-slide hero-slide hero-slide--intro">
+              <img class="hero-slide__image" src="assets/images/hero-grid-papers.jpg" alt="A variety of grid and graph paper rolls in white and translucent paper" width="1577" height="1200">
+              <div class="hero-slide__content">
+                <h1 class="hero-slide__title">Premium <span class="hero-slide__accent">Grid &amp; Graph</span><br>Paper Rolls</h1>
+                <p class="hero-slide__text">British made. Shipped directly to&nbsp;your door in&nbsp;Australia.</p>
+                <ul class="hero-slide__points">
+                  <li class="hero-slide__point"><span class="hero-slide__check"><span class="icon icon--check" aria-hidden="true"></span></span>In roll form, not sheets</li>
+                  <li class="hero-slide__point"><span class="hero-slide__check"><span class="icon icon--check" aria-hidden="true"></span></span>Various roll widths &amp; lengths</li>
+                  <li class="hero-slide__point"><span class="hero-slide__check"><span class="icon icon--check" aria-hidden="true"></span></span>Choice of paper types &amp; grades</li>
+                </ul>
+                <a class="btn btn--white hero-slide__btn" href="#catalog">
+                  Shop Grid Papers
+                  <span class="icon icon--arrow-right" aria-hidden="true"></span>
+                </a>
+              </div>
+            </div>
+
+            <div class="swiper-slide hero-slide">
+              <a class="hero-slide__link" href="delivery.html">
+                <img class="hero-slide__image" src="assets/images/hero-shipping-australia.jpg" alt="UK to Australia shipping. Transparent pricing, delivery included in every price" width="1983" height="793">
+              </a>
+            </div>
+
+            <div class="swiper-slide hero-slide">
+              <a class="hero-slide__link" href="gridcraft.html">
+                <img class="hero-slide__image" src="assets/images/hero-gridcraft.jpg" alt="PaperMart GridCraft, a self-adhesive grid mat printed to your table size" width="1983" height="793">
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+        <button class="slider-arrow slider-arrow--prev" type="button" aria-label="Previous slide" data-hero-prev>
+          <span class="icon icon--chevron-left" aria-hidden="true"></span>
+        </button>
+        <button class="slider-arrow slider-arrow--next" type="button" aria-label="Next slide" data-hero-next>
+          <span class="icon icon--chevron-right" aria-hidden="true"></span>
+        </button>
+
+        <div class="hero__pagination" data-hero-pagination></div>
+      </div>
+    </section>
+
+    <!-- ============ TRUST BAR (TOP) ============ -->
+    <section class="trust" aria-label="Why shop with PaperMart">
+      <ul class="trust__list container">
+        <li class="trust-item">
+          <span class="trust-item__icon"><span class="icon icon--truck" aria-hidden="true"></span></span>
+          <div class="trust-item__text">
+            <h3 class="trust-item__title">Prices Include Shipping</h3>
+            <p class="trust-item__desc">Standard shipping to&nbsp;Australia<br>included in&nbsp;every price</p>
+          </div>
+        </li>
+        <li class="trust-item">
+          <span class="trust-item__icon"><span class="icon icon--dollar" aria-hidden="true"></span></span>
+          <div class="trust-item__text">
+            <h3 class="trust-item__title">No Hidden Charges</h3>
+            <p class="trust-item__desc">The price you see is&nbsp;the price you&nbsp;pay</p>
+          </div>
+        </li>
+        <li class="trust-item">
+          <span class="trust-item__icon"><span class="icon icon--shield-check" aria-hidden="true"></span></span>
+          <div class="trust-item__text">
+            <h3 class="trust-item__title">Full Refund Guarantee</h3>
+            <p class="trust-item__desc">If your paper doesn’t arrive,<br>we&nbsp;refund you in&nbsp;full</p>
+          </div>
+        </li>
+        <li class="trust-item">
+          <span class="trust-item__icon"><span class="icon icon--lock" aria-hidden="true"></span></span>
+          <div class="trust-item__text">
+            <h3 class="trust-item__title">Purchase with Confidence</h3>
+            <p class="trust-item__desc">Quality products, reliable service</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ============ CATALOG ============ -->
+    <section class="catalog" id="catalog" aria-labelledby="catalog-title">
+      <div class="container">
+
+        <header class="section-title">
+          <h2 class="section-title__heading" id="catalog-title">Choose Your Grid Design</h2>
+          <p class="section-title__text">Precision grid and&nbsp;graph designs for&nbsp;every project.<br>Pick a&nbsp;design, then customise width, paper weight and&nbsp;roll length.</p>
+        </header>
+
+        <div class="catalog__body">
+
+          <!-- Sidebar -->
+          <aside class="catalog__sidebar">
+            <form class="filters" data-filters aria-label="Product filters">
+              <div class="filters__header">
+                <h3 class="filters__title"><span class="icon icon--sliders" aria-hidden="true"></span>Filters</h3>
+                <button class="filters__clear" type="button" data-filters-clear>Clear all</button>
+              </div>
+
+              <fieldset class="filter-group">
+                <legend class="filter-group__legend">
+                  <button class="filter-group__toggle" type="button" aria-expanded="true">Grid design<span class="icon icon--chevron-up" aria-hidden="true"></span></button>
+                </legend>
+                <div class="filter-group__options">
+                  <label class="checkbox"><input class="checkbox__input" type="checkbox" name="design" value="metric"><span class="checkbox__box"></span><span class="checkbox__label">Metric grids</span><span class="checkbox__count">7</span></label>
+                  <label class="checkbox"><input class="checkbox__input" type="checkbox" name="design" value="imperial"><span class="checkbox__box"></span><span class="checkbox__label">Imperial grids</span><span class="checkbox__count">2</span></label>
+                  <label class="checkbox"><input class="checkbox__input" type="checkbox" name="design" value="spot"><span class="checkbox__box"></span><span class="checkbox__label">Spot &amp; cross</span><span class="checkbox__count">2</span></label>
+                  <label class="checkbox"><input class="checkbox__input" type="checkbox" name="design" value="plain"><span class="checkbox__box"></span><span class="checkbox__label">Plain paper</span><span class="checkbox__count">1</span></label>
+                </div>
+              </fieldset>
+
+              <fieldset class="filter-group">
+                <legend class="filter-group__legend">
+                  <button class="filter-group__toggle" type="button" aria-expanded="true">Grid size<span class="icon icon--chevron-up" aria-hidden="true"></span></button>
+                </legend>
+                <div class="filter-group__options">
+                  <label class="checkbox"><input class="checkbox__input" type="checkbox" name="size" value="1mm"><span class="checkbox__box"></span><span class="checkbox__label">1mm</span><span class="checkbox__count">4</span></label>
+                  <label class="checkbox"><input class="checkbox__input" type="checkbox" name="size" value="5mm"><span class="checkbox__box"></span><span class="checkbox__label">5mm</span><span class="checkbox__count">6</span></label>
+                  <label class="checkbox"><input class="checkbox__input" type="checkbox" name="size" value="10mm"><span class="checkbox__box"></span><span class="checkbox__label">10mm</span><span class="checkbox__count">5</span></label>
+                  <label class="checkbox"><input class="checkbox__input" type="checkbox" name="size" value="20mm"><span class="checkbox__box"></span><span class="checkbox__label">20mm</span><span class="checkbox__count">1</span></label>
+                  <label class="checkbox"><input class="checkbox__input" type="checkbox" name="size" value="half-inch"><span class="checkbox__box"></span><span class="checkbox__label">½" (imperial)</span><span class="checkbox__count">2</span></label>
+                  <label class="checkbox"><input class="checkbox__input" type="checkbox" name="size" value="inch"><span class="checkbox__box"></span><span class="checkbox__label">1" (imperial)</span><span class="checkbox__count">4</span></label>
+                </div>
+              </fieldset>
+
+              <fieldset class="filter-group">
+                <legend class="filter-group__legend">
+                  <button class="filter-group__toggle" type="button" aria-expanded="true">Ratio<span class="icon icon--chevron-up" aria-hidden="true"></span></button>
+                </legend>
+                <div class="filter-group__options">
+                  <label class="checkbox"><input class="checkbox__input" type="checkbox" name="ratio" value="1:1"><span class="checkbox__box"></span><span class="checkbox__label">1:1</span><span class="checkbox__count">4</span></label>
+                  <label class="checkbox"><input class="checkbox__input" type="checkbox" name="ratio" value="2:1"><span class="checkbox__box"></span><span class="checkbox__label">2:1</span><span class="checkbox__count">3</span></label>
+                  <label class="checkbox"><input class="checkbox__input" type="checkbox" name="ratio" value="5:1"><span class="checkbox__box"></span><span class="checkbox__label">5:1</span><span class="checkbox__count">4</span></label>
+                  <label class="checkbox"><input class="checkbox__input" type="checkbox" name="ratio" value="10:1"><span class="checkbox__box"></span><span class="checkbox__label">10:1</span><span class="checkbox__count">2</span></label>
+                </div>
+              </fieldset>
+
+              <fieldset class="filter-group">
+                <legend class="filter-group__legend">
+                  <button class="filter-group__toggle" type="button" aria-expanded="true">Paper type<span class="icon icon--chevron-up" aria-hidden="true"></span></button>
+                </legend>
+                <div class="filter-group__options">
+                  <label class="checkbox"><input class="checkbox__input" type="checkbox" name="type" value="white"><span class="checkbox__box"></span><span class="checkbox__label">White</span><span class="checkbox__count">10</span></label>
+                  <label class="checkbox"><input class="checkbox__input" type="checkbox" name="type" value="translucent"><span class="checkbox__box"></span><span class="checkbox__label">Translucent tracing</span><span class="checkbox__count">2</span></label>
+                </div>
+              </fieldset>
+
+              <fieldset class="filter-group">
+                <legend class="filter-group__legend">
+                  <button class="filter-group__toggle" type="button" aria-expanded="true">Roll width<span class="icon icon--chevron-up" aria-hidden="true"></span></button>
+                </legend>
+                <div class="filter-group__options">
+                  <label class="checkbox"><input class="checkbox__input" type="checkbox" name="width" value="610"><span class="checkbox__box"></span><span class="checkbox__label">610mm (24")</span><span class="checkbox__count">3</span></label>
+                  <label class="checkbox"><input class="checkbox__input" type="checkbox" name="width" value="914"><span class="checkbox__box"></span><span class="checkbox__label">914mm (36")</span><span class="checkbox__count">9</span></label>
+                </div>
+              </fieldset>
+            </form>
+
+            <div class="sidebar-card sidebar-card--help">
+              <span class="icon icon--grid sidebar-card__icon" aria-hidden="true"></span>
+              <h3 class="sidebar-card__title">Not sure which grid you&nbsp;need?</h3>
+              <p class="sidebar-card__text">Compare paper weights, widths and&nbsp;core sizes side by&nbsp;side.</p>
+              <a class="link-arrow" href="specifications.html">View specifications<span class="icon icon--arrow-right" aria-hidden="true"></span></a>
+            </div>
+
+            <div class="sidebar-card sidebar-card--delivery">
+              <div class="delivery-card__head">
+                <span class="icon icon--shield-check delivery-card__head-icon" aria-hidden="true"></span>
+                <h3 class="delivery-card__title">The price you see is&nbsp;the price you&nbsp;pay</h3>
+                <p class="delivery-card__text">Shipping to&nbsp;Australia is&nbsp;included. No&nbsp;hidden fees.</p>
+              </div>
+              <div class="delivery-option">
+                <div class="delivery-option__head">
+                  <span class="delivery-option__icon"><span class="icon icon--truck" aria-hidden="true"></span></span>
+                  <div>
+                    <h4 class="delivery-option__title">Standard delivery</h4>
+                    <p class="delivery-option__time">7–10 working days · included</p>
+                  </div>
+                </div>
+                <ul class="check-list">
+                  <li>Fully tracked, door to door</li>
+                  <li>In most cases arrives sooner</li>
+                </ul>
+              </div>
+              <div class="delivery-option delivery-option--express">
+                <div class="delivery-option__head">
+                  <span class="delivery-option__icon"><span class="icon icon--rocket" aria-hidden="true"></span></span>
+                  <div>
+                    <h4 class="delivery-option__title">Expedited delivery</h4>
+                    <p class="delivery-option__time">3–5 working days</p>
+                  </div>
+                </div>
+                <ul class="check-list">
+                  <li>Priority handling, faster transit</li>
+                  <li>Upgrade available at checkout</li>
+                </ul>
+              </div>
+            </div>
+          </aside>
+
+          <!-- Products -->
+          <div class="catalog__products">
+            <div class="catalog__toolbar">
+              <p class="catalog__status" data-catalog-status aria-live="polite">All grid designs</p>
+              <label class="sort">
+                <span class="sort__label">Sort by:</span>
+                <select class="sort__select" data-sort>
+                  <option value="popular">Most popular</option>
+                  <option value="price-asc">Price low to high</option>
+                  <option value="price-desc">Price high to low</option>
+                </select>
+                <span class="icon icon--chevron-down sort__chevron" aria-hidden="true"></span>
+              </label>
+            </div>
+
+            <ul class="product-grid" data-product-grid>
+
+              <li class="product-card" data-product data-popularity="1" data-price="45.95" data-design="metric" data-size="5mm" data-ratio="10:1" data-type="white" data-width="610 914">
+                <div class="product-card__media"><img src="assets/images/grid-5mm-50mm-ruler.png" alt="5mm and 50mm blue grid with printed ruler" width="1176" height="1020" loading="lazy"></div>
+                <div class="product-card__body">
+                  <h3 class="product-card__title">5mm &amp; 50mm<br>Grids with Ruler</h3>
+                  <div class="rating" aria-label="Rated 4.8 out of 5, 7 reviews"><span class="rating__stars" style="--rating: 5"></span><span class="rating__value">4.8</span><span class="rating__count">(7)</span></div>
+                  <p class="price"><span class="price__from">From</span><span class="price__value">$45.95</span><span class="price__currency">AUD</span></p>
+                  <p class="product-card__delivery"><span class="icon icon--truck" aria-hidden="true"></span>Delivery included</p>
+                  <a class="btn btn--primary product-card__btn" href="product.html">Customise Now<span class="icon icon--arrow-right" aria-hidden="true"></span></a>
+                </div>
+              </li>
+
+              <li class="product-card" data-product data-popularity="2" data-price="49.95" data-design="metric" data-size="1mm 5mm 10mm" data-ratio="1:1" data-type="white" data-width="610 914">
+                <div class="product-card__media"><img src="assets/images/grid-1mm-5mm-10mm.png" alt="1mm, 5mm and 10mm red precision grid" width="1176" height="1020" loading="lazy"></div>
+                <div class="product-card__body">
+                  <h3 class="product-card__title">1mm, 5mm &amp; 10mm<br>Grids (1:1 Ratio)</h3>
+                  <div class="rating" aria-label="Rated 5.0 out of 5, 5 reviews"><span class="rating__stars" style="--rating: 5"></span><span class="rating__value">5.0</span><span class="rating__count">(5)</span></div>
+                  <p class="price"><span class="price__from">From</span><span class="price__value">$49.95</span><span class="price__currency">AUD</span></p>
+                  <p class="product-card__delivery"><span class="icon icon--truck" aria-hidden="true"></span>Delivery included</p>
+                  <a class="btn btn--primary product-card__btn" href="product.html">Customise Now<span class="icon icon--arrow-right" aria-hidden="true"></span></a>
+                </div>
+              </li>
+
+              <li class="product-card" data-product data-popularity="3" data-price="45.95" data-design="imperial" data-size="half-inch inch" data-ratio="2:1" data-type="white" data-width="610 914">
+                <div class="product-card__media"><img src="assets/images/grid-inch-half-inch-ruler.png" alt="1 inch and half inch imperial grid with printed ruler" width="1176" height="1020" loading="lazy"></div>
+                <div class="product-card__body">
+                  <h3 class="product-card__title">1" &amp; ½"<br>Grids with Ruler</h3>
+                  <div class="rating" aria-label="Rated 4.7 out of 5, 18 reviews"><span class="rating__stars" style="--rating: 5"></span><span class="rating__value">4.7</span><span class="rating__count">(18)</span></div>
+                  <p class="price"><span class="price__from">From</span><span class="price__value">$45.95</span><span class="price__currency">AUD</span></p>
+                  <p class="product-card__delivery"><span class="icon icon--truck" aria-hidden="true"></span>Delivery included</p>
+                  <a class="btn btn--primary product-card__btn" href="product.html">Customise Now<span class="icon icon--arrow-right" aria-hidden="true"></span></a>
+                </div>
+              </li>
+
+              <li class="product-card" data-product data-popularity="4" data-price="42.95" data-design="metric" data-size="10mm 20mm" data-ratio="2:1" data-type="white" data-width="914">
+                <div class="product-card__media"><img src="assets/images/grid-10mm-20mm.png" alt="10mm and 20mm blue grid" width="1176" height="1020" loading="lazy"></div>
+                <div class="product-card__body">
+                  <h3 class="product-card__title">10mm &amp; 20mm<br>Grids</h3>
+                  <div class="rating" aria-label="Rated 4.6 out of 5, 53 reviews"><span class="rating__stars" style="--rating: 5"></span><span class="rating__value">4.6</span><span class="rating__count">(53)</span></div>
+                  <p class="price"><span class="price__from">From</span><span class="price__value">$42.95</span><span class="price__currency">AUD</span></p>
+                  <p class="product-card__delivery"><span class="icon icon--truck" aria-hidden="true"></span>Delivery included</p>
+                  <a class="btn btn--primary product-card__btn" href="product.html">Customise Now<span class="icon icon--arrow-right" aria-hidden="true"></span></a>
+                </div>
+              </li>
+
+              <li class="product-card" data-product data-popularity="5" data-price="39.95" data-design="spot" data-size="inch" data-ratio="1:1" data-type="white" data-width="914">
+                <div class="product-card__media"><img src="assets/images/spot-cross-1in.png" alt="Spot and cross pattern paper with 1 inch spacing" width="1176" height="1020" loading="lazy"></div>
+                <div class="product-card__body">
+                  <h3 class="product-card__title">Spot &amp; Cross<br>1" Space (Imperial)</h3>
+                  <div class="rating" aria-label="Rated 4.4 out of 5, 27 reviews"><span class="rating__stars" style="--rating: 4"></span><span class="rating__value">4.4</span><span class="rating__count">(27)</span></div>
+                  <p class="price"><span class="price__from">From</span><span class="price__value">$39.95</span><span class="price__currency">AUD</span></p>
+                  <p class="product-card__delivery"><span class="icon icon--truck" aria-hidden="true"></span>Delivery included</p>
+                  <a class="btn btn--primary product-card__btn" href="product.html">Customise Now<span class="icon icon--arrow-right" aria-hidden="true"></span></a>
+                </div>
+              </li>
+
+              <li class="product-card" data-product data-popularity="6" data-price="39.95" data-design="spot" data-size="20mm" data-ratio="1:1" data-type="white" data-width="914">
+                <div class="product-card__media"><img src="assets/images/spot-cross-20mm.png" alt="Spot and cross pattern paper with 20mm spacing" width="1176" height="1020" loading="lazy"></div>
+                <div class="product-card__body">
+                  <h3 class="product-card__title">Spot &amp; Cross<br>20mm Space (Metric)</h3>
+                  <div class="rating" aria-label="Rated 4.9 out of 5, 12 reviews"><span class="rating__stars" style="--rating: 5"></span><span class="rating__value">4.9</span><span class="rating__count">(12)</span></div>
+                  <p class="price"><span class="price__from">From</span><span class="price__value">$39.95</span><span class="price__currency">AUD</span></p>
+                  <p class="product-card__delivery"><span class="icon icon--truck" aria-hidden="true"></span>Delivery included</p>
+                  <a class="btn btn--primary product-card__btn" href="product.html">Customise Now<span class="icon icon--arrow-right" aria-hidden="true"></span></a>
+                </div>
+              </li>
+
+              <li class="product-card" data-product data-popularity="7" data-price="39.95" data-design="metric" data-size="5mm 10mm" data-ratio="2:1" data-type="white" data-width="610 914">
+                <div class="product-card__media"><img src="assets/images/grid-5mm-10mm-red.png" alt="5mm and 10mm red grid" width="1176" height="1020" loading="lazy"></div>
+                <div class="product-card__body">
+                  <h3 class="product-card__title">5mm &amp; 10mm<br>Grids</h3>
+                  <div class="rating" aria-label="Rated 4.5 out of 5, 9 reviews"><span class="rating__stars" style="--rating: 5"></span><span class="rating__value">4.5</span><span class="rating__count">(9)</span></div>
+                  <p class="price"><span class="price__from">From</span><span class="price__value">$39.95</span><span class="price__currency">AUD</span></p>
+                  <p class="product-card__delivery"><span class="icon icon--truck" aria-hidden="true"></span>Delivery included</p>
+                  <a class="btn btn--primary product-card__btn" href="product.html">Customise Now<span class="icon icon--arrow-right" aria-hidden="true"></span></a>
+                </div>
+              </li>
+
+              <li class="product-card" data-product data-popularity="8" data-price="49.95" data-design="metric" data-size="5mm 10mm" data-ratio="10:1" data-type="white" data-width="914">
+                <div class="product-card__media"><img src="assets/images/grid-5mm-10mm-100mm.png" alt="5mm, 10mm and 100mm blue grid" width="1176" height="1020" loading="lazy"></div>
+                <div class="product-card__body">
+                  <h3 class="product-card__title">5mm, 10mm &amp;<br>100mm Grids</h3>
+                  <div class="rating rating--empty" aria-label="No reviews yet"><span class="rating__stars" style="--rating: 0"></span><span class="rating__value rating__value--muted">No reviews yet</span></div>
+                  <p class="price"><span class="price__from">From</span><span class="price__value">$49.95</span><span class="price__currency">AUD</span></p>
+                  <p class="product-card__delivery"><span class="icon icon--truck" aria-hidden="true"></span>Delivery included</p>
+                  <a class="btn btn--primary product-card__btn" href="product.html">Customise Now<span class="icon icon--arrow-right" aria-hidden="true"></span></a>
+                </div>
+              </li>
+
+              <!-- Demo products revealed by "View more products" (replace with real catalogue data) -->
+              <li class="product-card" data-product data-popularity="9" data-price="73.95" data-design="metric" data-size="1mm 5mm 10mm" data-ratio="5:1" data-type="translucent" data-width="610 914">
+                <div class="product-card__media"><img src="assets/images/grid-1mm-5mm-10mm.png" alt="1mm, 5mm and 10mm grid on translucent tracing paper" width="1176" height="1020" loading="lazy"></div>
+                <div class="product-card__body">
+                  <h3 class="product-card__title">1mm, 5mm &amp; 10mm<br>Tracing Paper</h3>
+                  <div class="rating rating--empty" aria-label="No reviews yet"><span class="rating__stars" style="--rating: 0"></span><span class="rating__value rating__value--muted">No reviews yet</span></div>
+                  <p class="price"><span class="price__from">From</span><span class="price__value">$73.95</span><span class="price__currency">AUD</span></p>
+                  <p class="product-card__delivery"><span class="icon icon--truck" aria-hidden="true"></span>Delivery included</p>
+                  <a class="btn btn--primary product-card__btn" href="product.html">Customise Now<span class="icon icon--arrow-right" aria-hidden="true"></span></a>
+                </div>
+              </li>
+
+              <li class="product-card" data-product data-popularity="10" data-price="48.95" data-design="imperial" data-size="half-inch inch" data-ratio="2:1" data-type="white" data-width="610">
+                <div class="product-card__media"><img src="assets/images/grid-inch-half-inch-ruler.png" alt="1 inch and half inch imperial grid, 20 metre roll" width="1176" height="1020" loading="lazy"></div>
+                <div class="product-card__body">
+                  <h3 class="product-card__title">1" &amp; ½" Grids<br>20m Value Roll</h3>
+                  <div class="rating rating--empty" aria-label="No reviews yet"><span class="rating__stars" style="--rating: 0"></span><span class="rating__value rating__value--muted">No reviews yet</span></div>
+                  <p class="price"><span class="price__from">From</span><span class="price__value">$48.95</span><span class="price__currency">AUD</span></p>
+                  <p class="product-card__delivery"><span class="icon icon--truck" aria-hidden="true"></span>Delivery included</p>
+                  <a class="btn btn--primary product-card__btn" href="product.html">Customise Now<span class="icon icon--arrow-right" aria-hidden="true"></span></a>
+                </div>
+              </li>
+
+              <li class="product-card" data-product data-popularity="11" data-price="32.95" data-design="plain" data-size="" data-ratio="" data-type="white" data-width="914">
+                <div class="product-card__media"><img src="assets/images/plain-pattern-paper.png" alt="Plain white pattern drafting paper" width="1176" height="1020" loading="lazy"></div>
+                <div class="product-card__body">
+                  <h3 class="product-card__title">Plain Pattern<br>Drafting Paper</h3>
+                  <div class="rating" aria-label="Rated 4.4 out of 5, 139 reviews"><span class="rating__stars" style="--rating: 4"></span><span class="rating__value">4.4</span><span class="rating__count">(139)</span></div>
+                  <p class="price"><span class="price__from">From</span><span class="price__value">$32.95</span><span class="price__currency">AUD</span></p>
+                  <p class="product-card__delivery"><span class="icon icon--truck" aria-hidden="true"></span>Delivery included</p>
+                  <a class="btn btn--primary product-card__btn" href="product.html">Customise Now<span class="icon icon--arrow-right" aria-hidden="true"></span></a>
+                </div>
+              </li>
+
+              <!-- Custom grid card: always shown last, not affected by filters/sorting -->
+              <li class="product-card product-card--custom" data-custom-card>
+                <div class="product-card__media product-card__media--custom">
+                  <span class="icon icon--grid product-card__custom-icon" aria-hidden="true"></span>
+                </div>
+                <div class="product-card__body">
+                  <h3 class="product-card__title">Custom Grid<br>Design</h3>
+                  <p class="product-card__text">Any spacing, colour or&nbsp;layout, printed to&nbsp;your exact requirements.</p>
+                  <a class="btn btn--outline product-card__btn" href="contact.html">Request a Design<span class="icon icon--arrow-right" aria-hidden="true"></span></a>
+                </div>
+              </li>
+            </ul>
+
+            <p class="catalog__empty" data-catalog-empty hidden>No grid designs match these filters. Try clearing a&nbsp;filter.</p>
+
+            <div class="catalog__more">
+              <button class="btn btn--outline btn--lg" type="button" data-view-more>
+                View more products
+                <span class="icon icon--arrow-down" aria-hidden="true"></span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TRUST BAR (BOTTOM) ============ -->
+    <section class="trust" aria-label="About PaperMart">
+      <ul class="trust__list container">
+        <li class="trust-item">
+          <span class="trust-item__icon"><span class="icon icon--award" aria-hidden="true"></span></span>
+          <div class="trust-item__text">
+            <h3 class="trust-item__title">British Business</h3>
+            <p class="trust-item__desc">Proudly based in&nbsp;the UK</p>
+          </div>
+        </li>
+        <li class="trust-item">
+          <span class="trust-item__icon"><span class="icon icon--factory" aria-hidden="true"></span></span>
+          <div class="trust-item__text">
+            <h3 class="trust-item__title">In-House Production</h3>
+            <p class="trust-item__desc">Quality you can trust</p>
+          </div>
+        </li>
+        <li class="trust-item">
+          <span class="trust-item__icon"><span class="icon icon--headphones" aria-hidden="true"></span></span>
+          <div class="trust-item__text">
+            <h3 class="trust-item__title">Dedicated Support</h3>
+            <p class="trust-item__desc">We’re here to&nbsp;help</p>
+          </div>
+        </li>
+        <li class="trust-item">
+          <span class="trust-item__icon"><span class="icon icon--lock" aria-hidden="true"></span></span>
+          <div class="trust-item__text">
+            <h3 class="trust-item__title">Secure Payments</h3>
+            <p class="trust-item__desc">Powered by Stripe</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a href="index.html" aria-label="PaperMart home">
+            <img class="footer__logo" src="assets/images/logo-papermart.png" alt="PaperMart, www.papermart.au" width="253" height="60" loading="lazy">
+          </a>
+          <p class="footer__tagline">British made.<br>Australia delivered.</p>
+          <p class="footer__about">Premium grid and&nbsp;graph paper rolls, printed in&nbsp;Britain and&nbsp;shipped to&nbsp;your door.</p>
+        </div>
+
+        <nav class="footer__col" aria-labelledby="footer-info">
+          <h3 class="footer__heading" id="footer-info">Information</h3>
+          <ul class="footer__links">
+            <li><a href="specifications.html">Specifications</a></li>
+            <li><a href="delivery.html">Shipping &amp; delivery</a></li>
+            <li><a href="returns.html">Returns</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="terms.html">Terms &amp; conditions</a></li>
+            <li><a href="privacy.html">Privacy policy</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer__col footer__col--help">
+          <h3 class="footer__heading">Need help?</h3>
+          <ul class="footer__contacts">
+            <li><span class="icon icon--phone" aria-hidden="true"></span><a href="tel:+61280001234">02 8000 1234</a></li>
+            <li><span class="icon icon--mail" aria-hidden="true"></span><a href="mailto:hello@papermart.au">hello@papermart.au</a></li>
+            <li class="footer__hours"><span class="icon icon--clock" aria-hidden="true"></span>Mon – Fri, 8:30am – 5:00pm AEST</li>
+          </ul>
+        </div>
+
+        <form class="enquiry" data-enquiry-form novalidate>
+          <h3 class="footer__heading">Quick enquiry</h3>
+          <div class="enquiry__row">
+            <div class="field">
+              <label class="visually-hidden" for="enq-name">Your name</label>
+              <input class="field__input" id="enq-name" name="name" type="text" placeholder="Your name" autocomplete="name" required>
+              <span class="field__error" data-error-for="name"></span>
+            </div>
+            <div class="field">
+              <label class="visually-hidden" for="enq-email">Email address</label>
+              <input class="field__input" id="enq-email" name="email" type="email" placeholder="Email address" autocomplete="email" required>
+              <span class="field__error" data-error-for="email"></span>
+            </div>
+          </div>
+          <div class="field">
+            <label class="visually-hidden" for="enq-message">How can we help?</label>
+            <textarea class="field__input field__input--textarea" id="enq-message" name="message" placeholder="How can we help?" required></textarea>
+            <span class="field__error" data-error-for="message"></span>
+          </div>
+          <button class="btn btn--primary btn--md" type="submit">
+            Send message
+            <span class="icon icon--arrow-right" aria-hidden="true"></span>
+          </button>
+          <p class="enquiry__success" data-enquiry-success role="status" hidden>Thank you! Your message has been sent. We’ll get back to you within 1&nbsp;business day.</p>
+        </form>
+      </div>
+
+      <div class="footer__bottom">
+        <p>© 2026 PaperMart. All rights reserved.</p>
+        <p>PaperMart™ is a registered Trade Mark – Registration No. UK0000380298</p>
+        <p>All prices in AUD and include standard shipping.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/vendor/swiper-bundle.min.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>
