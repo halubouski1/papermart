@@ -1,0 +1,9 @@
+<svg width="186" height="26" viewBox="0 0 186 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Frame">
+<line id="Line" y1="12" x2="70" y2="12" stroke="white" stroke-opacity="0.7" stroke-width="2" stroke-dasharray="6 6"/>
+<g id="Frame_2">
+<path id="Vector" d="M99.2833 20.8L97.3333 11.9167L101.125 8.125C102.75 6.5 103.292 4.33333 102.75 3.25C101.667 2.70833 99.5 3.25 97.875 4.875L94.0833 8.66667L85.2 6.71667C84.6583 6.60833 84.225 6.825 84.0083 7.25833L83.6833 7.8C83.4667 8.34167 83.575 8.88333 84.0083 9.20833L89.75 13L87.5833 16.25H84.3333L83.25 17.3333L86.5 19.5L88.6667 22.75L89.75 21.6667V18.4167L93 16.25L96.7917 21.9917C97.1167 22.425 97.6583 22.5333 98.2 22.3167L98.7417 22.1C99.175 21.775 99.3917 21.3417 99.2833 20.8Z" stroke="#5FB0FF" stroke-width="2.16667" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<line id="Line_2" x1="116" y1="12" x2="186" y2="12" stroke="white" stroke-opacity="0.7" stroke-width="2" stroke-dasharray="6 6"/>
+</g>
+</svg>

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact Us | PaperMart</title>
+  <meta name="description" content="Get in touch with PaperMart for questions, support or custom grid paper requests. Email, WhatsApp or send us a message.">
+
+  <link rel="preload" href="assets/fonts/nunito-sans-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/nunito-sans-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/images/contact-banner.jpg" as="image">
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/media.css">
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header class="header">
+    <div class="header__inner container">
+      <a class="header__logo" href="index.html" aria-label="PaperMart home">
+        <img src="assets/images/logo-papermart.png" alt="PaperMart, www.papermart.au" width="219" height="52">
+      </a>
+
+      <nav class="nav" aria-label="Main navigation">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="gridcraft.html">GridCraft</a></li>
+          <li><a class="nav__link" href="specifications.html">Specifications</a></li>
+          <li><a class="nav__link" href="delivery.html">Delivery</a></li>
+          <li><a class="nav__link" href="faq.html">FAQ</a></li>
+          <li><a class="nav__link" href="contact.html" aria-current="page">Contact us</a></li>
+        </ul>
+      </nav>
+
+      <div class="header__actions">
+        <a class="header__login" href="account.html">
+          <span class="icon icon--user" aria-hidden="true"></span>
+          Login
+        </a>
+        <a class="cart" href="cart.html" data-cart aria-label="Shopping cart">
+          <span class="cart__icon">
+            <span class="icon icon--cart" aria-hidden="true"></span>
+            <span class="cart__badge" data-cart-count>2</span>
+          </span>
+          <span class="cart__total" data-cart-total>$89.90 AUD</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============ CONTACT HERO ============ -->
+    <section class="page-hero contact-hero" aria-labelledby="contact-title">
+      <div class="page-hero__banner container">
+        <img class="page-hero__image contact-hero__image" src="assets/images/contact-banner.jpg" alt="" width="2400" height="1159">
+        <div class="page-hero__content">
+          <h1 class="contact-hero__title" id="contact-title">Contact Us</h1>
+          <p class="contact-hero__text">We’re here to help. Get in touch with our team<br>for any <strong>questions</strong>, <strong>support</strong> or <strong>custom requests</strong>.</p>
+          <div class="contact-hero__topics">
+            <p class="contact-hero__label">What can we help you with?</p>
+            <ul class="contact-hero__links">
+              <li>
+                <a class="contact-hero__link" href="#contact-form">
+                  <span class="icon icon--message-circle contact-hero__link-icon" aria-hidden="true"></span>
+                  Send a message
+                  <span class="icon icon--arrow-down contact-hero__link-arrow" aria-hidden="true"></span>
+                </a>
+              </li>
+              <li>
+                <a class="contact-hero__link" href="#custom-grid">
+                  <span class="icon icon--ruler contact-hero__link-icon" aria-hidden="true"></span>
+                  Custom grid design
+                  <span class="icon icon--arrow-down contact-hero__link-arrow" aria-hidden="true"></span>
+                </a>
+              </li>
+              <li>
+                <a class="contact-hero__link" href="faq.html">
+                  <span class="icon icon--help-circle contact-hero__link-icon" aria-hidden="true"></span>
+                  Browse FAQs
+                  <span class="icon icon--arrow-right contact-hero__link-arrow" aria-hidden="true"></span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT MAIN: FORM + GET IN TOUCH ============ -->
+    <section class="contact-main" aria-label="Contact options">
+      <div class="contact-main__inner container">
+
+        <form class="contact-form" id="contact-form" data-contact-form novalidate aria-labelledby="contact-form-title">
+          <h2 class="contact-form__title" id="contact-form-title">Send Us a Message</h2>
+          <p class="contact-form__intro">Fill in the form below and we’ll get back to you as soon as possible.</p>
+
+          <div class="contact-form__row">
+            <div class="field">
+              <label class="field__label" for="cf-name">Full name <span class="field__required" aria-hidden="true">*</span></label>
+              <input class="field__input field__input--lg" id="cf-name" name="name" type="text" placeholder="e.g. John Smith" autocomplete="name" required>
+              <span class="field__error" data-error-for="name"></span>
+            </div>
+            <div class="field">
+              <label class="field__label" for="cf-email">Email address <span class="field__required" aria-hidden="true">*</span></label>
+              <input class="field__input field__input--lg" id="cf-email" name="email" type="email" placeholder="e.g. john.smith@email.com.au" autocomplete="email" required>
+              <span class="field__error" data-error-for="email"></span>
+            </div>
+          </div>
+
+          <div class="contact-form__row">
+            <div class="field">
+              <label class="field__label" for="cf-phone">Phone number <span class="field__required" aria-hidden="true">*</span></label>
+              <input class="field__input field__input--lg" id="cf-phone" name="phone" type="tel" placeholder="e.g. 0412 345 678" autocomplete="tel" required>
+              <span class="field__error" data-error-for="phone"></span>
+            </div>
+            <div class="field field--select">
+              <label class="field__label" for="cf-subject">Subject <span class="field__required" aria-hidden="true">*</span></label>
+              <select class="field__input field__input--lg field__select" id="cf-subject" name="subject" required>
+                <option value="" disabled selected>Please select a subject</option>
+                <option value="general">General enquiry</option>
+                <option value="product">Product enquiry</option>
+                <option value="order">Order enquiry</option>
+                <option value="shipping">Shipping &amp; delivery</option>
+                <option value="custom-grid">Custom grid design</option>
+                <option value="returns">Returns</option>
+                <option value="other">Other</option>
+              </select>
+              <span class="icon icon--chevron-down field__chevron" aria-hidden="true"></span>
+              <span class="field__error" data-error-for="subject"></span>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="cf-message">Your message <span class="field__required" aria-hidden="true">*</span></label>
+            <textarea class="field__input field__input--lg field__input--textarea contact-form__message" id="cf-message" name="message" placeholder="How can we help you?" required></textarea>
+            <span class="field__error" data-error-for="message"></span>
+          </div>
+
+          <div class="field">
+            <label class="checkbox contact-form__consent">
+              <input class="checkbox__input" type="checkbox" name="consent" value="yes" required>
+              <span class="checkbox__box"></span>
+              <span class="checkbox__label">I agree to the <a class="contact-form__link" href="privacy.html">Privacy Policy</a> and consent to my data being used to respond to my enquiry.</span>
+            </label>
+            <span class="field__error" data-error-for="consent"></span>
+          </div>
+
+          <!-- reCAPTCHA: replace this placeholder with the real Google reCAPTCHA widget
+               (e.g. <div class="g-recaptcha" data-sitekey="…">) once the site key is configured. -->
+          <div class="contact-form__recaptcha" role="img" aria-label="reCAPTCHA placeholder, verification will be added later">
+            <span class="contact-form__recaptcha-check">
+              <span class="contact-form__recaptcha-box"></span>
+              I’m not a robot
+            </span>
+            <span class="contact-form__recaptcha-brand">
+              <span class="icon icon--refresh contact-form__recaptcha-logo"></span>
+              <span class="contact-form__recaptcha-name">reCAPTCHA</span>
+              <span class="contact-form__recaptcha-terms">Privacy · Terms</span>
+            </span>
+          </div>
+
+          <button class="btn btn--primary btn--lg contact-form__submit" type="submit">
+            Send message
+            <span class="icon icon--send" aria-hidden="true"></span>
+          </button>
+          <p class="contact-form__success" data-contact-success role="status" hidden>Thank you! Your message has been sent. We’ll get back to you within 1&nbsp;business day.</p>
+        </form>
+
+        <aside class="contact-info" aria-labelledby="contact-info-title">
+          <h2 class="contact-info__title" id="contact-info-title">Get in Touch</h2>
+          <p class="contact-info__intro">You can also reach us using the details below.</p>
+
+          <ul class="contact-info__list">
+            <li>
+              <a class="contact-method" href="tel:+61280001234">
+                <span class="icon-circle contact-method__icon"><span class="icon icon--phone" aria-hidden="true"></span></span>
+                <span class="contact-method__text">
+                  <span class="contact-method__value">02 8000 1234</span>
+                  <span class="contact-method__desc">Australian number, coming soon</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a class="contact-method" href="mailto:hello@papermart.au">
+                <span class="icon-circle contact-method__icon"><span class="icon icon--mail" aria-hidden="true"></span></span>
+                <span class="contact-method__text">
+                  <span class="contact-method__value">hello@papermart.au</span>
+                  <span class="contact-method__desc">We aim to reply within 1 business day</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a class="contact-method" href="https://wa.me/447990660585" target="_blank" rel="noopener">
+                <span class="icon-circle contact-method__icon"><span class="icon icon--whatsapp" aria-hidden="true"></span></span>
+                <span class="contact-method__text">
+                  <span class="contact-method__value">+44 7990 660585</span>
+                  <span class="contact-method__desc">Chat with WhatsApp, for a faster response</span>
+                </span>
+              </a>
+            </li>
+          </ul>
+
+          <p class="contact-info__note">
+            <span class="icon icon--info" aria-hidden="true"></span>
+            We’re based in the UK, so the quickest way to reach us is by email or WhatsApp chat.
+          </p>
+
+          <div class="contact-info__faq">
+            <h3 class="contact-info__faq-title">FAQs</h3>
+            <p class="contact-info__faq-text">Most questions can be answered in our FAQ section.</p>
+            <a class="btn btn--outline contact-info__faq-btn" href="faq.html">View FAQs<span class="icon icon--arrow-right" aria-hidden="true"></span></a>
+          </div>
+        </aside>
+
+      </div>
+    </section>
+
+    <!-- ============ ORDER TRACKING + LOCATIONS ============ -->
+    <section class="contact-extra" aria-label="Orders and locations">
+      <div class="container">
+
+        <div class="order-tracking">
+          <div class="order-tracking__head">
+            <span class="icon-circle order-tracking__icon"><span class="icon icon--package" aria-hidden="true"></span></span>
+            <div class="order-tracking__text">
+              <h2 class="order-tracking__title">Where is my order?</h2>
+              <p class="order-tracking__desc">Enter your tracking number to see the latest update. Most orders arrive in 7–10 working days.</p>
+            </div>
+          </div>
+          <form class="order-tracking__form" data-tracking-form novalidate>
+            <label class="visually-hidden" for="tracking-number">Order or tracking number</label>
+            <input class="field__input field__input--lg order-tracking__input" id="tracking-number" name="tracking" type="text" placeholder="Order or tracking number" autocomplete="off" required>
+            <button class="btn btn--primary btn--lg order-tracking__btn" type="submit">
+              Track order
+              <span class="icon icon--arrow-right" aria-hidden="true"></span>
+            </button>
+          </form>
+          <p class="order-tracking__status" data-tracking-status role="status" aria-live="polite" hidden></p>
+        </div>
+
+        <ul class="locations">
+          <li class="location-card">
+            <span class="icon-circle location-card__icon"><span class="icon icon--factory" aria-hidden="true"></span></span>
+            <div class="location-card__content">
+              <h3 class="location-card__title">UK Production Facility</h3>
+              <p class="location-card__subtitle">Where every roll is printed</p>
+              <address class="location-card__text">PaperMart, Unit 3, Sylvan Avenue, Leicester, LE5 3SN, England, United Kingdom</address>
+            </div>
+          </li>
+          <li class="location-card">
+            <span class="icon-circle location-card__icon"><span class="icon icon--store" aria-hidden="true"></span></span>
+            <div class="location-card__content">
+              <h3 class="location-card__title">Australian Sales Office</h3>
+              <p class="location-card__subtitle">Local sales office</p>
+              <p class="location-card__text location-card__text--muted">Address coming soon. Until then, please reach us by email or WhatsApp.</p>
+            </div>
+          </li>
+        </ul>
+
+      </div>
+    </section>
+
+    <!-- ============ CUSTOM GRID DESIGN ============ -->
+    <section class="custom-grid-cta" id="custom-grid" aria-labelledby="custom-grid-title">
+      <div class="container">
+        <div class="custom-grid-cta__panel">
+          <div class="custom-grid-cta__content">
+            <div class="custom-grid-cta__head">
+              <span class="icon-circle custom-grid-cta__icon"><span class="icon icon--ruler" aria-hidden="true"></span></span>
+              <h2 class="custom-grid-cta__title" id="custom-grid-title">Need a Custom Grid Design?</h2>
+            </div>
+            <p class="custom-grid-cta__text">We can print a grid or graph paper roll to your exact requirements.<br>If you need a specific layout, spacing, colour or measurements,<br>our team can create it for you.</p>
+
+            <ul class="custom-grid-cta__features">
+              <li class="feature">
+                <span class="feature__icon"><span class="icon icon--resize" aria-hidden="true"></span></span>
+                <h3 class="feature__title">Custom sizes</h3>
+                <p class="feature__text">Any width, length or measurements</p>
+              </li>
+              <li class="feature">
+                <span class="feature__icon"><span class="icon icon--grid" aria-hidden="true"></span></span>
+                <h3 class="feature__title">Custom layouts</h3>
+                <p class="feature__text">Unique grid, dot or ruled patterns</p>
+              </li>
+              <li class="feature">
+                <span class="feature__icon"><span class="icon icon--palette" aria-hidden="true"></span></span>
+                <h3 class="feature__title">Custom colours</h3>
+                <p class="feature__text">Print in blue, red, black or other colours</p>
+              </li>
+              <li class="feature">
+                <span class="feature__icon"><span class="icon icon--user" aria-hidden="true"></span></span>
+                <h3 class="feature__title">Expert support</h3>
+                <p class="feature__text">Our team will help you get it right</p>
+              </li>
+            </ul>
+
+            <div class="custom-grid-cta__actions">
+              <a class="btn btn--primary btn--lg custom-grid-cta__btn" href="#contact-form" data-subject="custom-grid">
+                Request a custom design
+                <span class="icon icon--arrow-right" aria-hidden="true"></span>
+              </a>
+              <p class="custom-grid-cta__note">We’ll respond within 1 business day.</p>
+            </div>
+          </div>
+
+          <div class="custom-grid-cta__collage" role="img" aria-label="Examples of grid and graph paper designs we print">
+            <img class="custom-grid-cta__sheet custom-grid-cta__sheet--1" src="assets/images/grid-1mm-5mm-10mm.png" alt="" width="1176" height="1020" loading="lazy">
+            <img class="custom-grid-cta__sheet custom-grid-cta__sheet--2" src="assets/images/grid-5mm-50mm-ruler.png" alt="" width="1176" height="1020" loading="lazy">
+            <img class="custom-grid-cta__sheet custom-grid-cta__sheet--3" src="assets/images/spot-cross-1in.png" alt="" width="1176" height="1020" loading="lazy">
+            <img class="custom-grid-cta__sheet custom-grid-cta__sheet--4" src="assets/images/grid-5mm-10mm-red.png" alt="" width="1176" height="1020" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a href="index.html" aria-label="PaperMart home">
+            <img class="footer__logo" src="assets/images/logo-papermart.png" alt="PaperMart, www.papermart.au" width="253" height="60" loading="lazy">
+          </a>
+          <p class="footer__tagline">British made.<br>Australia delivered.</p>
+          <p class="footer__about">Premium grid and&nbsp;graph paper rolls, printed in&nbsp;Britain and&nbsp;shipped to&nbsp;your door.</p>
+        </div>
+
+        <nav class="footer__col" aria-labelledby="footer-info">
+          <h3 class="footer__heading" id="footer-info">Information</h3>
+          <ul class="footer__links">
+            <li><a href="specifications.html">Specifications</a></li>
+            <li><a href="delivery.html">Shipping &amp; delivery</a></li>
+            <li><a href="returns.html">Returns</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="terms.html">Terms &amp; conditions</a></li>
+            <li><a href="privacy.html">Privacy policy</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer__col footer__col--help">
+          <h3 class="footer__heading">Need help?</h3>
+          <ul class="footer__contacts">
+            <li><span class="icon icon--phone" aria-hidden="true"></span><a href="tel:+61280001234">02 8000 1234</a></li>
+            <li><span class="icon icon--mail" aria-hidden="true"></span><a href="mailto:hello@papermart.au">hello@papermart.au</a></li>
+            <li class="footer__hours"><span class="icon icon--clock" aria-hidden="true"></span>Mon – Fri, 8:30am – 5:00pm AEST</li>
+          </ul>
+        </div>
+
+        <form class="enquiry" data-enquiry-form novalidate>
+          <h3 class="footer__heading">Quick enquiry</h3>
+          <div class="enquiry__row">
+            <div class="field">
+              <label class="visually-hidden" for="enq-name">Your name</label>
+              <input class="field__input" id="enq-name" name="name" type="text" placeholder="Your name" autocomplete="name" required>
+              <span class="field__error" data-error-for="name"></span>
+            </div>
+            <div class="field">
+              <label class="visually-hidden" for="enq-email">Email address</label>
+              <input class="field__input" id="enq-email" name="email" type="email" placeholder="Email address" autocomplete="email" required>
+              <span class="field__error" data-error-for="email"></span>
+            </div>
+          </div>
+          <div class="field">
+            <label class="visually-hidden" for="enq-message">How can we help?</label>
+            <textarea class="field__input field__input--textarea" id="enq-message" name="message" placeholder="How can we help?" required></textarea>
+            <span class="field__error" data-error-for="message"></span>
+          </div>
+          <button class="btn btn--primary btn--md" type="submit">
+            Send message
+            <span class="icon icon--arrow-right" aria-hidden="true"></span>
+          </button>
+          <p class="enquiry__success" data-enquiry-success role="status" hidden>Thank you! Your message has been sent. We’ll get back to you within 1&nbsp;business day.</p>
+        </form>
+      </div>
+
+      <div class="footer__bottom">
+        <p>© 2026 PaperMart. All rights reserved.</p>
+        <p>PaperMart™ is a registered Trade Mark – Registration No. UK0000380298</p>
+        <p>All prices in AUD and include standard shipping.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>

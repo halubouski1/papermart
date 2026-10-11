@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Delivery | PaperMart</title>
+  <meta name="description" content="Standard delivery to Australia in 7–10 working days is included in every PaperMart price. Expedited 3–5 day delivery available. Track your order.">
+
+  <link rel="preload" href="assets/fonts/nunito-sans-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/nunito-sans-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/images/delivery-banner.jpg" as="image">
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/media.css">
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header class="header">
+    <div class="header__inner container">
+      <a class="header__logo" href="index.html" aria-label="PaperMart home">
+        <img src="assets/images/logo-papermart.png" alt="PaperMart, www.papermart.au" width="219" height="52">
+      </a>
+
+      <nav class="nav" aria-label="Main navigation">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="gridcraft.html">GridCraft</a></li>
+          <li><a class="nav__link" href="specifications.html">Specifications</a></li>
+          <li><a class="nav__link" href="delivery.html" aria-current="page">Delivery</a></li>
+          <li><a class="nav__link" href="faq.html">FAQ</a></li>
+          <li><a class="nav__link" href="contact.html">Contact us</a></li>
+        </ul>
+      </nav>
+
+      <div class="header__actions">
+        <a class="header__login" href="account.html">
+          <span class="icon icon--user" aria-hidden="true"></span>
+          Login
+        </a>
+        <a class="cart" href="cart.html" data-cart aria-label="Shopping cart">
+          <span class="cart__icon">
+            <span class="icon icon--cart" aria-hidden="true"></span>
+            <span class="cart__badge" data-cart-count>2</span>
+          </span>
+          <span class="cart__total" data-cart-total>$89.90 AUD</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============ DELIVERY HERO ============ -->
+    <section class="page-hero delivery-hero" aria-labelledby="delivery-title">
+      <div class="page-hero__banner container">
+        <img class="page-hero__image delivery-hero__image" src="assets/images/delivery-banner.jpg" alt="" width="1000" height="690">
+        <div class="page-hero__content">
+          <h1 class="delivery-hero__title" id="delivery-title">Fast, Reliable Delivery<br>Straight to Your Door</h1>
+          <p class="delivery-hero__text">We ship all orders directly from our UK facility<br>to Australia with care and speed.</p>
+
+          <div class="delivery-route" role="img" aria-label="Shipped from the United Kingdom to Australia">
+            <div class="delivery-route__place">
+              <span class="icon-circle delivery-route__icon"><span class="icon icon--map-pin"></span></span>
+              <span class="delivery-route__text">
+                <span class="delivery-route__name">United Kingdom</span>
+                <span class="delivery-route__desc">Made in-house</span>
+              </span>
+            </div>
+            <img class="delivery-route__line" src="assets/icons/route.svg" alt="" width="186" height="26">
+            <div class="delivery-route__place">
+              <span class="icon-circle delivery-route__icon"><span class="icon icon--map-pin"></span></span>
+              <span class="delivery-route__text">
+                <span class="delivery-route__name">Australia</span>
+                <span class="delivery-route__desc">To your door, tracked</span>
+              </span>
+            </div>
+          </div>
+
+          <div class="delivery-hero__actions">
+            <a class="btn btn--white btn--xl" href="#track-order">
+              Track your order
+              <span class="icon icon--arrow-down" aria-hidden="true"></span>
+            </a>
+            <p class="delivery-hero__time"><span class="icon icon--clock" aria-hidden="true"></span>7–10 working days, standard delivery</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ DELIVERY OPTIONS ============ -->
+    <section class="delivery-options" aria-labelledby="delivery-options-title">
+      <div class="container">
+        <header class="section-title section-title--md">
+          <h2 class="section-title__heading" id="delivery-options-title">Our Delivery Options</h2>
+          <p class="section-title__text">Choose the delivery speed that suits you at checkout.</p>
+        </header>
+
+        <div class="delivery-options__grid">
+          <article class="delivery-plan delivery-plan--standard">
+            <div class="delivery-plan__header">
+              <span class="delivery-plan__icon"><span class="icon icon--truck" aria-hidden="true"></span></span>
+              <div>
+                <h3 class="delivery-plan__title">Standard delivery</h3>
+                <p class="delivery-plan__subtitle">7–10 working days · INCLUDED in all advertised prices!</p>
+              </div>
+            </div>
+            <p class="delivery-plan__description">Our standard delivery is already included in the price you see on the website.</p>
+            <ul class="check-list check-list--lg delivery-plan__list">
+              <li>Delivered in 7–10 working days</li>
+              <li>Fully tracked, door to door</li>
+              <li>In most cases your order arrives sooner</li>
+              <li>No hidden or extra charges</li>
+            </ul>
+            <p class="delivery-plan__note"><span class="icon icon--info" aria-hidden="true"></span>Great value and reliable delivery at no extra cost.</p>
+          </article>
+          <article class="delivery-plan delivery-plan--expedited">
+            <div class="delivery-plan__header">
+              <span class="delivery-plan__icon"><span class="icon icon--rocket" aria-hidden="true"></span></span>
+              <div>
+                <h3 class="delivery-plan__title">Expedited delivery</h3>
+                <p class="delivery-plan__subtitle">3–5 working days</p>
+              </div>
+            </div>
+            <p class="delivery-plan__description">Need your paper sooner? Choose expedited delivery at checkout.</p>
+            <ul class="check-list check-list--lg delivery-plan__list">
+              <li>Delivered in 3–5 working days</li>
+              <li>Priority handling and faster transit</li>
+              <li>Fully tracked, door to door</li>
+              <li>Upgrade available at checkout</li>
+            </ul>
+            <p class="delivery-plan__note"><span class="icon icon--info" aria-hidden="true"></span>Perfect when you need your paper in a hurry.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TRACK YOUR ORDER ============ -->
+    <section class="delivery-track" id="track-order" aria-labelledby="track-title">
+      <div class="container">
+        <div class="order-tracking order-tracking--lg">
+          <div class="order-tracking__head">
+            <span class="order-tracking__icon order-tracking__icon--soft"><span class="icon icon--package" aria-hidden="true"></span></span>
+            <div class="order-tracking__text">
+              <h2 class="order-tracking__title" id="track-title">Track Your Order</h2>
+              <p class="order-tracking__desc">Once your order is dispatched, you’ll receive an email with your tracking number. Updates may take up to 24 hours to appear.</p>
+            </div>
+          </div>
+          <form class="order-tracking__form" data-tracking-form novalidate>
+            <label class="visually-hidden" for="tracking-number">Tracking number</label>
+            <input class="field__input field__input--lg order-tracking__input" id="tracking-number" name="tracking" type="text" placeholder="Enter your tracking number" autocomplete="off" required>
+            <button class="btn btn--primary btn--lg order-tracking__btn" type="submit">
+              Track order
+              <span class="icon icon--arrow-right" aria-hidden="true"></span>
+            </button>
+          </form>
+          <p class="order-tracking__status" data-tracking-status role="status" aria-live="polite" hidden></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ HELP + GUARANTEES ============ -->
+    <section class="delivery-support" aria-label="Help and guarantees">
+      <div class="delivery-support__inner container">
+        <div class="delivery-support__cards">
+          <div class="support-card">
+            <span class="icon-circle support-card__icon"><span class="icon icon--help-circle" aria-hidden="true"></span></span>
+            <div class="support-card__text">
+              <h3 class="support-card__title">Delivery questions?</h3>
+              <p class="support-card__desc">Answers to common delivery questions<br>are on our FAQ page.</p>
+            </div>
+            <a class="btn btn--outline btn--lg support-card__btn" href="faq.html">View FAQ<span class="icon icon--arrow-right" aria-hidden="true"></span></a>
+          </div>
+          <div class="support-card">
+            <span class="icon-circle support-card__icon"><span class="icon icon--mail" aria-hidden="true"></span></span>
+            <div class="support-card__text">
+              <h3 class="support-card__title">Need help?</h3>
+              <p class="support-card__desc">Our team is here to help with any<br>question about your delivery.</p>
+            </div>
+            <a class="btn btn--outline btn--lg support-card__btn" href="contact.html">Contact us<span class="icon icon--arrow-right" aria-hidden="true"></span></a>
+          </div>
+        </div>
+
+        <ul class="delivery-trust">
+          <li class="delivery-trust__item">
+            <span class="icon-circle delivery-trust__icon"><span class="icon icon--tag" aria-hidden="true"></span></span>
+            <h3 class="delivery-trust__title">All prices include standard shipping</h3>
+            <p class="delivery-trust__text">The price you see is the price you pay.</p>
+          </li>
+          <li class="delivery-trust__item">
+            <span class="icon-circle delivery-trust__icon"><span class="icon icon--dollar" aria-hidden="true"></span></span>
+            <h3 class="delivery-trust__title">No hidden charges</h3>
+            <p class="delivery-trust__text">No extra fees. No surprises at checkout.</p>
+          </li>
+          <li class="delivery-trust__item">
+            <span class="icon-circle delivery-trust__icon"><span class="icon icon--rotate-ccw" aria-hidden="true"></span></span>
+            <h3 class="delivery-trust__title">Full refund guarantee</h3>
+            <p class="delivery-trust__text">If your paper does not arrive,<br>we refund you in full.</p>
+          </li>
+          <li class="delivery-trust__item">
+            <span class="icon-circle delivery-trust__icon"><span class="icon icon--headphones" aria-hidden="true"></span></span>
+            <h3 class="delivery-trust__title">Purchase with confidence</h3>
+            <p class="delivery-trust__text">Quality products and outstanding service.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a href="index.html" aria-label="PaperMart home">
+            <img class="footer__logo" src="assets/images/logo-papermart.png" alt="PaperMart, www.papermart.au" width="253" height="60" loading="lazy">
+          </a>
+          <p class="footer__tagline">British made.<br>Australia delivered.</p>
+          <p class="footer__about">Premium grid and&nbsp;graph paper rolls, printed in&nbsp;Britain and&nbsp;shipped to&nbsp;your door.</p>
+        </div>
+
+        <nav class="footer__col" aria-labelledby="footer-info">
+          <h3 class="footer__heading" id="footer-info">Information</h3>
+          <ul class="footer__links">
+            <li><a href="specifications.html">Specifications</a></li>
+            <li><a href="delivery.html">Shipping &amp; delivery</a></li>
+            <li><a href="returns.html">Returns</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="terms.html">Terms &amp; conditions</a></li>
+            <li><a href="privacy.html">Privacy policy</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer__col footer__col--help">
+          <h3 class="footer__heading">Need help?</h3>
+          <ul class="footer__contacts">
+            <li><span class="icon icon--phone" aria-hidden="true"></span><a href="tel:+61280001234">02 8000 1234</a></li>
+            <li><span class="icon icon--mail" aria-hidden="true"></span><a href="mailto:hello@papermart.au">hello@papermart.au</a></li>
+            <li class="footer__hours"><span class="icon icon--clock" aria-hidden="true"></span>Mon – Fri, 8:30am – 5:00pm AEST</li>
+          </ul>
+        </div>
+
+        <form class="enquiry" data-enquiry-form novalidate>
+          <h3 class="footer__heading">Quick enquiry</h3>
+          <div class="enquiry__row">
+            <div class="field">
+              <label class="visually-hidden" for="enq-name">Your name</label>
+              <input class="field__input" id="enq-name" name="name" type="text" placeholder="Your name" autocomplete="name" required>
+              <span class="field__error" data-error-for="name"></span>
+            </div>
+            <div class="field">
+              <label class="visually-hidden" for="enq-email">Email address</label>
+              <input class="field__input" id="enq-email" name="email" type="email" placeholder="Email address" autocomplete="email" required>
+              <span class="field__error" data-error-for="email"></span>
+            </div>
+          </div>
+          <div class="field">
+            <label class="visually-hidden" for="enq-message">How can we help?</label>
+            <textarea class="field__input field__input--textarea" id="enq-message" name="message" placeholder="How can we help?" required></textarea>
+            <span class="field__error" data-error-for="message"></span>
+          </div>
+          <button class="btn btn--primary btn--md" type="submit">
+            Send message
+            <span class="icon icon--arrow-right" aria-hidden="true"></span>
+          </button>
+          <p class="enquiry__success" data-enquiry-success role="status" hidden>Thank you! Your message has been sent. We’ll get back to you within 1&nbsp;business day.</p>
+        </form>
+      </div>
+
+      <div class="footer__bottom">
+        <p>© 2026 PaperMart. All rights reserved.</p>
+        <p>PaperMart™ is a registered Trade Mark – Registration No. UK0000380298</p>
+        <p>All prices in AUD and include standard shipping.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
