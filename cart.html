@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your Basket | PaperMart</title>
+  <meta name="description" content="Review your PaperMart basket. Prices include standard shipping to Australia, with no hidden charges or import fees.">
+
+  <link rel="preload" href="assets/fonts/nunito-sans-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/nunito-sans-400.woff2" as="font" type="font/woff2" crossorigin>
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/vendor/swiper-bundle.min.css">
+  <link rel="stylesheet" href="css/vendor/aos.css">
+  <link rel="stylesheet" href="css/vendor/lenis.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/media.css">
+</head>
+<body>
+
+  <!-- ============ INFO BAR ============ -->
+  <div class="info-bar" data-info-bar>
+    <div class="info-bar__inner container">
+      <span class="icon icon--truck info-bar__icon" aria-hidden="true"></span>
+      <p class="info-bar__text">Prices include shipping to Australia — no hidden charges or import fees.</p>
+      <a class="info-bar__link" href="delivery.html">Learn more</a>
+      <button class="info-bar__close" type="button" aria-label="Close announcement" data-info-bar-close><span class="icon icon--close" aria-hidden="true"></span></button>
+    </div>
+  </div>
+
+  <!-- ============ HEADER ============ -->
+  <header class="header">
+    <div class="header__inner container">
+      <a class="header__logo" href="index.html" aria-label="PaperMart home">
+        <img src="assets/images/logo-papermart.png" alt="PaperMart, www.papermart.au" width="219" height="52">
+      </a>
+
+      <nav class="nav" id="site-nav" aria-label="Main navigation" data-nav>
+        <ul class="nav__list">
+          <li><a class="nav__link" href="gridcraft.html">GridCraft</a></li>
+          <li><a class="nav__link" href="specifications.html">Specifications</a></li>
+          <li><a class="nav__link" href="delivery.html">Delivery</a></li>
+          <li><a class="nav__link" href="faq.html">FAQ</a></li>
+          <li><a class="nav__link" href="contact.html">Contact us</a></li>
+        </ul>
+        <div class="nav__extra">
+          <div class="nav__account">
+            <a class="nav__login" href="account.html"><span class="icon icon--user" aria-hidden="true"></span>Login</a>
+            <a class="cart nav__cart" href="cart.html" data-cart aria-label="Shopping cart">
+              <span class="cart__icon">
+                <span class="icon icon--cart" aria-hidden="true"></span>
+                <span class="cart__badge" data-cart-count>2</span>
+              </span>
+              <span class="cart__total" data-cart-total>$89.90 AUD</span>
+            </a>
+          </div>
+          <div class="nav__help">
+            <p class="nav__help-title">Need help?</p>
+            <ul class="nav__contacts">
+              <li><span class="icon icon--whatsapp" aria-hidden="true"></span><a href="https://wa.me/447990660585" target="_blank" rel="noopener">+44 7990 660585 (WhatsApp)</a></li>
+              <li><span class="icon icon--phone" aria-hidden="true"></span><a href="tel:+61280001234">02 8000 1234</a></li>
+              <li><span class="icon icon--mail" aria-hidden="true"></span><a href="mailto:hello@papermart.au">hello@papermart.au</a></li>
+              <li class="nav__hours"><span class="icon icon--clock" aria-hidden="true"></span>Mon – Fri, 8:30am – 5:00pm AEST</li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <div class="header__actions">
+        <a class="header__login" href="account.html">
+          <span class="icon icon--user" aria-hidden="true"></span>
+          Login
+        </a>
+        <a class="cart" href="cart.html" data-cart aria-label="Shopping cart">
+          <span class="cart__icon">
+            <span class="icon icon--cart" aria-hidden="true"></span>
+            <span class="cart__badge" data-cart-count>2</span>
+          </span>
+          <span class="cart__total" data-cart-total>$89.90 AUD</span>
+        </a>
+        <button class="header__menu" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav" data-menu-toggle>
+          <span class="icon icon--menu" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Blueprint grid: from below the header down to the footer -->
+    <div class="page-grid">
+
+    <!-- ============ TITLE ============ -->
+    <section class="basket-title">
+      <div class="container">
+        <a class="basket-title__back" href="index.html#catalog"><span class="icon icon--arrow-left" aria-hidden="true"></span>Continue shopping</a>
+        <div class="basket-title__heading">
+          <h1 class="basket-title__text">Your Basket</h1>
+          <p class="basket-title__count" data-basket-count-label>2 items</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BASKET ============ -->
+    <section class="basket" aria-label="Basket" data-basket>
+      <div class="container basket__inner">
+        <div class="basket-items">
+          <div class="basket-items__head">
+            <p class="basket-items__count" data-basket-items-label>2 items in your basket</p>
+            <button class="basket-items__clear" type="button" data-basket-clear>Clear basket</button>
+          </div>
+          <ul class="basket-items__list" data-basket-list>
+            <li class="basket-item" data-basket-item data-price="45.95">
+              <a class="basket-item__thumb" href="product.html"><img src="assets/images/grid-5mm-50mm-ruler.png" alt="5mm and 50mm blue grid with printed ruler" width="1176" height="1020"></a>
+              <div class="basket-item__info">
+                <h2 class="basket-item__title"><a href="product.html">5mm &amp; 50mm Grids with Ruler</a></h2>
+                <p class="basket-item__options"><span>Width: 610mm (24")</span> <span>Paper: 50gsm White</span> <span>Length: 10 metres</span></p>
+                <p class="basket-item__unit">$45.95 AUD per roll</p>
+              </div>
+              <div class="qty" role="group" aria-label="Quantity">
+                <button class="qty__btn" type="button" aria-label="Decrease quantity" data-basket-minus><span class="icon icon--minus" aria-hidden="true"></span></button>
+                <input class="qty__value" type="number" inputmode="numeric" min="1" max="99" value="1" aria-label="Quantity" data-basket-qty>
+                <button class="qty__btn" type="button" aria-label="Increase quantity" data-basket-plus><span class="icon icon--plus" aria-hidden="true"></span></button>
+              </div>
+              <p class="basket-item__total" data-basket-line-total>$45.95 AUD</p>
+            </li>
+            <li class="basket-item" data-basket-item data-price="43.95">
+              <a class="basket-item__thumb" href="product.html?product=10mm-20mm"><img src="assets/images/grid-10mm-20mm.png" alt="10mm and 20mm blue grid" width="1176" height="1020"></a>
+              <div class="basket-item__info">
+                <h2 class="basket-item__title"><a href="product.html?product=10mm-20mm">10mm &amp; 20mm Grids</a></h2>
+                <p class="basket-item__options"><span>Width: 914mm (36")</span> <span>Paper: 90gsm White</span> <span>Length: 10 metres</span></p>
+                <p class="basket-item__unit">$43.95 AUD per roll</p>
+              </div>
+              <div class="qty" role="group" aria-label="Quantity">
+                <button class="qty__btn" type="button" aria-label="Decrease quantity" data-basket-minus><span class="icon icon--minus" aria-hidden="true"></span></button>
+                <input class="qty__value" type="number" inputmode="numeric" min="1" max="99" value="1" aria-label="Quantity" data-basket-qty>
+                <button class="qty__btn" type="button" aria-label="Increase quantity" data-basket-plus><span class="icon icon--plus" aria-hidden="true"></span></button>
+              </div>
+              <p class="basket-item__total" data-basket-line-total>$43.95 AUD</p>
+            </li>
+          </ul>
+          <div class="basket-empty" data-basket-empty hidden>
+            <p class="basket-empty__title">Your basket is empty</p>
+            <p class="basket-empty__text">Pick a grid design and customise width, paper weight and roll length.</p>
+            <a class="btn btn--primary" href="index.html#catalog">Browse grid designs<span class="icon icon--arrow-right" aria-hidden="true"></span></a>
+          </div>
+        </div>
+
+        <aside class="order-summary" aria-labelledby="order-summary-title">
+          <h2 class="order-summary__title" id="order-summary-title">Order summary</h2>
+          <dl class="order-summary__rows">
+            <div class="order-summary__row"><dt data-basket-subtotal-label>Subtotal (2 items)</dt><dd data-basket-subtotal>$89.90 AUD</dd></div>
+            <div class="order-summary__row"><dt>Shipping to Australia</dt><dd class="is-included">Included</dd></div>
+            <div class="order-summary__row"><dt>Import fees &amp; duties</dt><dd class="is-included">None</dd></div>
+          </dl>
+          <div class="order-summary__total">
+            <span class="order-summary__total-label">Total</span>
+            <span class="order-summary__total-value"><span data-basket-total>$89.90</span><span class="order-summary__currency">AUD</span></span>
+          </div>
+          <p class="order-summary__note"><span class="icon icon--check" aria-hidden="true"></span>Price includes standard shipping. No hidden charges.</p>
+          <form class="discount" data-discount-form novalidate>
+            <label class="visually-hidden" for="discount-code">Discount code</label>
+            <input class="discount__input" id="discount-code" name="code" type="text" placeholder="Discount code" autocomplete="off">
+            <button class="btn btn--outline discount__btn" type="submit">Apply</button>
+            <p class="discount__message" data-discount-message aria-live="polite"></p>
+          </form>
+          <a class="btn btn--primary order-summary__checkout" href="checkout.html" data-checkout><span class="icon icon--lock" aria-hidden="true"></span>Proceed to Checkout</a>
+          <p class="order-summary__secure"><span class="icon icon--lock" aria-hidden="true"></span>Secure payments powered by Stripe</p>
+          <div class="order-summary__delivery">
+            <span class="icon icon--truck" aria-hidden="true"></span>
+            <div>
+              <p class="order-summary__delivery-title">Estimated delivery: 7–10 working days</p>
+              <p class="order-summary__delivery-text">Shipped from Britain, tracked to your door</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ============ TRUST BAR ============ -->
+    <section class="trust" aria-label="About PaperMart">
+      <ul class="trust__list container">
+        <li class="trust-item">
+          <span class="trust-item__icon"><span class="icon icon--award" aria-hidden="true"></span></span>
+          <div class="trust-item__text">
+            <h3 class="trust-item__title">British Business</h3>
+            <p class="trust-item__desc">Proudly based in&nbsp;the UK</p>
+          </div>
+        </li>
+        <li class="trust-item">
+          <span class="trust-item__icon"><span class="icon icon--factory" aria-hidden="true"></span></span>
+          <div class="trust-item__text">
+            <h3 class="trust-item__title">In-House Production</h3>
+            <p class="trust-item__desc">Quality you can trust</p>
+          </div>
+        </li>
+        <li class="trust-item">
+          <span class="trust-item__icon"><span class="icon icon--headphones" aria-hidden="true"></span></span>
+          <div class="trust-item__text">
+            <h3 class="trust-item__title">Dedicated Support</h3>
+            <p class="trust-item__desc">We’re here to&nbsp;help</p>
+          </div>
+        </li>
+        <li class="trust-item">
+          <span class="trust-item__icon"><span class="icon icon--lock" aria-hidden="true"></span></span>
+          <div class="trust-item__text">
+            <h3 class="trust-item__title">Secure Payments</h3>
+            <p class="trust-item__desc">Powered by Stripe</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    </div>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a href="index.html" aria-label="PaperMart home">
+            <img class="footer__logo" src="assets/images/logo-papermart.png" alt="PaperMart, www.papermart.au" width="253" height="60" loading="lazy">
+          </a>
+          <p class="footer__tagline">British made.<br>Australia delivered.</p>
+          <p class="footer__about">Premium grid and&nbsp;graph paper rolls, printed in&nbsp;Britain and&nbsp;shipped to&nbsp;your door.</p>
+        </div>
+
+        <nav class="footer__col" aria-labelledby="footer-info">
+          <h3 class="footer__heading" id="footer-info">Information</h3>
+          <ul class="footer__links">
+            <li><a href="specifications.html">Specifications</a></li>
+            <li><a href="delivery.html">Shipping &amp; delivery</a></li>
+            <li><a href="returns.html">Returns</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="terms.html">Terms &amp; conditions</a></li>
+            <li><a href="privacy.html">Privacy policy</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer__col footer__col--help">
+          <h3 class="footer__heading">Need help?</h3>
+          <ul class="footer__contacts">
+            <li><span class="icon icon--phone" aria-hidden="true"></span><a href="tel:+61280001234">02 8000 1234</a></li>
+            <li><span class="icon icon--mail" aria-hidden="true"></span><a href="mailto:hello@papermart.au">hello@papermart.au</a></li>
+            <li class="footer__hours"><span class="icon icon--clock" aria-hidden="true"></span>Mon – Fri, 8:30am – 5:00pm AEST</li>
+          </ul>
+        </div>
+
+        <form class="enquiry" data-enquiry-form novalidate>
+          <h3 class="footer__heading">Quick enquiry</h3>
+          <div class="enquiry__row">
+            <div class="field">
+              <label class="visually-hidden" for="enq-name">Your name</label>
+              <input class="field__input" id="enq-name" name="name" type="text" placeholder="Your name" autocomplete="name" required>
+              <span class="field__error" data-error-for="name"></span>
+            </div>
+            <div class="field">
+              <label class="visually-hidden" for="enq-email">Email address</label>
+              <input class="field__input" id="enq-email" name="email" type="email" placeholder="Email address" autocomplete="email" required>
+              <span class="field__error" data-error-for="email"></span>
+            </div>
+          </div>
+          <div class="field">
+            <label class="visually-hidden" for="enq-message">How can we help?</label>
+            <textarea class="field__input field__input--textarea" id="enq-message" name="message" placeholder="How can we help?" required></textarea>
+            <span class="field__error" data-error-for="message"></span>
+          </div>
+          <button class="btn btn--primary btn--md" type="submit">
+            Send message
+            <span class="icon icon--arrow-right" aria-hidden="true"></span>
+          </button>
+          <p class="enquiry__success" data-enquiry-success role="status" hidden>Thank you! Your message has been sent. We’ll get back to you within 1&nbsp;business day.</p>
+        </form>
+      </div>
+
+      <div class="footer__bottom">
+        <p>© 2026 PaperMart. All rights reserved.</p>
+        <p>PaperMart™ is a registered Trade Mark – Registration No. UK0000380298</p>
+        <p>All prices in AUD and include standard shipping.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/vendor/swiper-bundle.min.js" defer></script>
+  <script src="js/vendor/aos.js" defer></script>
+  <script src="js/vendor/lenis.min.js" defer></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>

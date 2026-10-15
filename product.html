@@ -11,10 +11,22 @@
 
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/vendor/swiper-bundle.min.css">
+  <link rel="stylesheet" href="css/vendor/aos.css">
+  <link rel="stylesheet" href="css/vendor/lenis.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/media.css">
 </head>
 <body>
+
+  <!-- ============ INFO BAR ============ -->
+  <div class="info-bar" data-info-bar>
+    <div class="info-bar__inner container">
+      <span class="icon icon--truck info-bar__icon" aria-hidden="true"></span>
+      <p class="info-bar__text">Prices include shipping to Australia — no hidden charges or import fees.</p>
+      <a class="info-bar__link" href="delivery.html">Learn more</a>
+      <button class="info-bar__close" type="button" aria-label="Close announcement" data-info-bar-close><span class="icon icon--close" aria-hidden="true"></span></button>
+    </div>
+  </div>
 
   <!-- ============ HEADER ============ -->
   <header class="header">
@@ -23,7 +35,7 @@
         <img src="assets/images/logo-papermart.png" alt="PaperMart, www.papermart.au" width="219" height="52">
       </a>
 
-      <nav class="nav" aria-label="Main navigation">
+      <nav class="nav" id="site-nav" aria-label="Main navigation" data-nav>
         <ul class="nav__list">
           <li><a class="nav__link" href="gridcraft.html">GridCraft</a></li>
           <li><a class="nav__link" href="specifications.html">Specifications</a></li>
@@ -31,6 +43,27 @@
           <li><a class="nav__link" href="faq.html">FAQ</a></li>
           <li><a class="nav__link" href="contact.html">Contact us</a></li>
         </ul>
+        <div class="nav__extra">
+          <div class="nav__account">
+            <a class="nav__login" href="account.html"><span class="icon icon--user" aria-hidden="true"></span>Login</a>
+            <a class="cart nav__cart" href="cart.html" data-cart aria-label="Shopping cart">
+              <span class="cart__icon">
+                <span class="icon icon--cart" aria-hidden="true"></span>
+                <span class="cart__badge" data-cart-count>2</span>
+              </span>
+              <span class="cart__total" data-cart-total>$89.90 AUD</span>
+            </a>
+          </div>
+          <div class="nav__help">
+            <p class="nav__help-title">Need help?</p>
+            <ul class="nav__contacts">
+              <li><span class="icon icon--whatsapp" aria-hidden="true"></span><a href="https://wa.me/447990660585" target="_blank" rel="noopener">+44 7990 660585 (WhatsApp)</a></li>
+              <li><span class="icon icon--phone" aria-hidden="true"></span><a href="tel:+61280001234">02 8000 1234</a></li>
+              <li><span class="icon icon--mail" aria-hidden="true"></span><a href="mailto:hello@papermart.au">hello@papermart.au</a></li>
+              <li class="nav__hours"><span class="icon icon--clock" aria-hidden="true"></span>Mon – Fri, 8:30am – 5:00pm AEST</li>
+            </ul>
+          </div>
+        </div>
       </nav>
 
       <div class="header__actions">
@@ -45,11 +78,17 @@
           </span>
           <span class="cart__total" data-cart-total>$89.90 AUD</span>
         </a>
+        <button class="header__menu" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav" data-menu-toggle>
+          <span class="icon icon--menu" aria-hidden="true"></span>
+        </button>
       </div>
     </div>
   </header>
 
   <main>
+
+    <!-- Blueprint grid: from below the header down to the footer -->
+    <div class="page-grid">
 
     <!-- ============ PRODUCT ============ -->
     <section class="product" aria-labelledby="product-title" data-product-page data-product-id="5mm-50mm-ruler">
@@ -260,15 +299,17 @@
             <div class="review-list">
               <div class="review-list__bar">
                 <p class="review-list__count" data-review-count aria-live="polite">Showing 3 of 7 reviews</p>
-                <label class="sort sort--sm">
-                  <span class="visually-hidden">Sort reviews</span>
-                  <select class="sort__select" data-review-sort>
-                    <option value="recent">Most recent</option>
-                    <option value="highest">Highest rated</option>
-                    <option value="lowest">Lowest rated</option>
-                  </select>
-                  <span class="icon icon--chevron-down sort__chevron" aria-hidden="true"></span>
-                </label>
+                <div class="dropdown" data-dropdown data-value="recent" data-review-sort>
+                  <button class="sort sort--sm dropdown__toggle" type="button" id="review-sort-toggle" aria-haspopup="listbox" aria-expanded="false" aria-controls="review-sort-menu" data-dropdown-toggle>
+                    <span class="visually-hidden">Sort reviews: </span><span class="sort__value" data-dropdown-label>Most recent</span>
+                    <span class="icon icon--chevron-down sort__chevron" aria-hidden="true"></span>
+                  </button>
+                  <ul class="dropdown__menu" id="review-sort-menu" role="listbox" aria-labelledby="review-sort-toggle" hidden data-dropdown-menu>
+                    <li class="dropdown__option" role="option" tabindex="-1" aria-selected="true" data-value="recent">Most recent<span class="icon icon--check dropdown__check" aria-hidden="true"></span></li>
+                    <li class="dropdown__option" role="option" tabindex="-1" aria-selected="false" data-value="highest">Highest rated<span class="icon icon--check dropdown__check" aria-hidden="true"></span></li>
+                    <li class="dropdown__option" role="option" tabindex="-1" aria-selected="false" data-value="lowest">Lowest rated<span class="icon icon--check dropdown__check" aria-hidden="true"></span></li>
+                  </ul>
+                </div>
               </div>
               <!-- Only the first three reviews appear in Figma; the other four are placeholder content matching the 6 × 5★ / 1 × 4★ summary. -->
               <div class="review-list__items" data-review-items>
@@ -474,6 +515,7 @@
       </div>
     </section>
 
+    </div>
   </main>
 
   <!-- ============ WRITE A REVIEW (frontend prototype, nothing is stored) ============ -->
@@ -582,6 +624,8 @@
   </footer>
 
   <script src="js/vendor/swiper-bundle.min.js" defer></script>
+  <script src="js/vendor/aos.js" defer></script>
+  <script src="js/vendor/lenis.min.js" defer></script>
   <script src="js/main.js" defer></script>
 </body>
 </html>

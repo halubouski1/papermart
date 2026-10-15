@@ -11,10 +11,22 @@
   <link rel="preload" href="assets/images/delivery-banner.jpg" as="image">
 
   <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/vendor/aos.css">
+  <link rel="stylesheet" href="css/vendor/lenis.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/media.css">
 </head>
 <body>
+
+  <!-- ============ INFO BAR ============ -->
+  <div class="info-bar" data-info-bar>
+    <div class="info-bar__inner container">
+      <span class="icon icon--truck info-bar__icon" aria-hidden="true"></span>
+      <p class="info-bar__text">Prices include shipping to Australia — no hidden charges or import fees.</p>
+      <a class="info-bar__link" href="delivery.html">Learn more</a>
+      <button class="info-bar__close" type="button" aria-label="Close announcement" data-info-bar-close><span class="icon icon--close" aria-hidden="true"></span></button>
+    </div>
+  </div>
 
   <!-- ============ HEADER ============ -->
   <header class="header">
@@ -23,7 +35,7 @@
         <img src="assets/images/logo-papermart.png" alt="PaperMart, www.papermart.au" width="219" height="52">
       </a>
 
-      <nav class="nav" aria-label="Main navigation">
+      <nav class="nav" id="site-nav" aria-label="Main navigation" data-nav>
         <ul class="nav__list">
           <li><a class="nav__link" href="gridcraft.html">GridCraft</a></li>
           <li><a class="nav__link" href="specifications.html">Specifications</a></li>
@@ -31,6 +43,27 @@
           <li><a class="nav__link" href="faq.html">FAQ</a></li>
           <li><a class="nav__link" href="contact.html">Contact us</a></li>
         </ul>
+        <div class="nav__extra">
+          <div class="nav__account">
+            <a class="nav__login" href="account.html"><span class="icon icon--user" aria-hidden="true"></span>Login</a>
+            <a class="cart nav__cart" href="cart.html" data-cart aria-label="Shopping cart">
+              <span class="cart__icon">
+                <span class="icon icon--cart" aria-hidden="true"></span>
+                <span class="cart__badge" data-cart-count>2</span>
+              </span>
+              <span class="cart__total" data-cart-total>$89.90 AUD</span>
+            </a>
+          </div>
+          <div class="nav__help">
+            <p class="nav__help-title">Need help?</p>
+            <ul class="nav__contacts">
+              <li><span class="icon icon--whatsapp" aria-hidden="true"></span><a href="https://wa.me/447990660585" target="_blank" rel="noopener">+44 7990 660585 (WhatsApp)</a></li>
+              <li><span class="icon icon--phone" aria-hidden="true"></span><a href="tel:+61280001234">02 8000 1234</a></li>
+              <li><span class="icon icon--mail" aria-hidden="true"></span><a href="mailto:hello@papermart.au">hello@papermart.au</a></li>
+              <li class="nav__hours"><span class="icon icon--clock" aria-hidden="true"></span>Mon – Fri, 8:30am – 5:00pm AEST</li>
+            </ul>
+          </div>
+        </div>
       </nav>
 
       <div class="header__actions">
@@ -45,6 +78,9 @@
           </span>
           <span class="cart__total" data-cart-total>$89.90 AUD</span>
         </a>
+        <button class="header__menu" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav" data-menu-toggle>
+          <span class="icon icon--menu" aria-hidden="true"></span>
+        </button>
       </div>
     </div>
   </header>
@@ -56,8 +92,8 @@
       <div class="page-hero__banner container">
         <img class="page-hero__image delivery-hero__image" src="assets/images/delivery-banner.jpg" alt="" width="1000" height="690">
         <div class="page-hero__content">
-          <h1 class="delivery-hero__title" id="delivery-title">Fast, Reliable Delivery<br>Straight to Your Door</h1>
-          <p class="delivery-hero__text">We ship all orders directly from our UK facility<br>to Australia with care and speed.</p>
+          <h1 class="delivery-hero__title" id="delivery-title">Fast, Reliable Delivery <br>Straight to Your Door</h1>
+          <p class="delivery-hero__text">We ship all orders directly from our UK facility <br>to Australia with care and speed.</p>
 
           <div class="delivery-route" role="img" aria-label="Shipped from the United Kingdom to Australia">
             <div class="delivery-route__place">
@@ -87,6 +123,9 @@
         </div>
       </div>
     </section>
+
+    <!-- Blueprint grid: from below the banner down to the footer -->
+    <div class="page-grid">
 
     <!-- ============ DELIVERY OPTIONS ============ -->
     <section class="delivery-options" aria-labelledby="delivery-options-title">
@@ -167,7 +206,7 @@
             <span class="icon-circle support-card__icon"><span class="icon icon--help-circle" aria-hidden="true"></span></span>
             <div class="support-card__text">
               <h3 class="support-card__title">Delivery questions?</h3>
-              <p class="support-card__desc">Answers to common delivery questions<br>are on our FAQ page.</p>
+              <p class="support-card__desc">Answers to common delivery questions <br>are on our FAQ page.</p>
             </div>
             <a class="btn btn--outline btn--lg support-card__btn" href="faq.html">View FAQ<span class="icon icon--arrow-right" aria-hidden="true"></span></a>
           </div>
@@ -175,7 +214,7 @@
             <span class="icon-circle support-card__icon"><span class="icon icon--mail" aria-hidden="true"></span></span>
             <div class="support-card__text">
               <h3 class="support-card__title">Need help?</h3>
-              <p class="support-card__desc">Our team is here to help with any<br>question about your delivery.</p>
+              <p class="support-card__desc">Our team is here to help with any <br>question about your delivery.</p>
             </div>
             <a class="btn btn--outline btn--lg support-card__btn" href="contact.html">Contact us<span class="icon icon--arrow-right" aria-hidden="true"></span></a>
           </div>
@@ -195,7 +234,7 @@
           <li class="delivery-trust__item">
             <span class="icon-circle delivery-trust__icon"><span class="icon icon--rotate-ccw" aria-hidden="true"></span></span>
             <h3 class="delivery-trust__title">Full refund guarantee</h3>
-            <p class="delivery-trust__text">If your paper does not arrive,<br>we refund you in full.</p>
+            <p class="delivery-trust__text">If your paper does not arrive, <br>we refund you in full.</p>
           </li>
           <li class="delivery-trust__item">
             <span class="icon-circle delivery-trust__icon"><span class="icon icon--headphones" aria-hidden="true"></span></span>
@@ -206,6 +245,7 @@
       </div>
     </section>
 
+    </div>
   </main>
 
   <!-- ============ FOOTER ============ -->
@@ -276,6 +316,8 @@
     </div>
   </footer>
 
+  <script src="js/vendor/aos.js" defer></script>
+  <script src="js/vendor/lenis.min.js" defer></script>
   <script src="js/main.js" defer></script>
 </body>
 </html>

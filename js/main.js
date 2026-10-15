@@ -5,19 +5,72 @@
   'use strict';
 
   document.addEventListener('DOMContentLoaded', function () {
+    initInfoBar();
+    initMobileMenu();
     initHeroSlider();
     initCart();
     initCatalog();
     initFilterToggles();
+    initFiltersDrawer();
     initEnquiryForm();
     initContactForm();
     initOrderTracking();
     initAccordions();
     initProductPage();
     initProductTabs();
+    initDropdowns();
     initReviews();
     initRelatedProductsSwiper();
+    initBasketPage();
+    initSmoothScroll();
+    initAnimations();
   });
+
+  var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  /* ---------- 0. Info bar: dismissible for the current browser session only ---------- */
+  var INFO_BAR_KEY = 'pm-info-bar-closed';
+
+  function initInfoBar() {
+    var bar = document.querySelector('[data-info-bar]');
+    if (!bar) return;
+    var closed = false;
+    try { localStorage.removeItem(INFO_BAR_KEY); } catch (e) { /* old permanent flag; storage unavailable */ }
+    try { closed = sessionStorage.getItem(INFO_BAR_KEY) === '1'; } catch (e) { /* storage unavailable */ }
+    if (closed) { bar.remove(); return; }
+
+    bar.querySelector('[data-info-bar-close]').addEventListener('click', function () {
+      try { sessionStorage.setItem(INFO_BAR_KEY, '1'); } catch (e) { /* storage unavailable */ }
+      bar.style.height = bar.offsetHeight + 'px';
+      bar.offsetHeight; // force reflow so the collapse animates
+      bar.style.height = '0px';
+      bar.addEventListener('transitionend', function () { bar.remove(); }, { once: true });
+    });
+  }
+
+  /* ---------- Header menu (nav collapses ≤1279px) ---------- */
+  function initMobileMenu() {
+    var toggle = document.querySelector('[data-menu-toggle]');
+    var nav = document.querySelector('[data-nav]');
+    if (!toggle || !nav) return;
+    var header = toggle.closest('.header');
+
+    function setOpen(open) {
+      header.classList.toggle('is-menu-open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    }
+
+    toggle.addEventListener('click', function () { setOpen(!header.classList.contains('is-menu-open')); });
+    nav.addEventListener('click', function (e) { if (e.target.closest('a')) setOpen(false); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && header.classList.contains('is-menu-open')) { setOpen(false); toggle.focus(); }
+    });
+    document.addEventListener('click', function (e) {
+      if (header.classList.contains('is-menu-open') && !header.contains(e.target)) setOpen(false);
+    });
+    window.matchMedia('(min-width: 1280px)').addEventListener('change', function (e) { if (e.matches) setOpen(false); });
+  }
 
   /* ---------- 1. Hero slider (Swiper) ---------- */
   function initHeroSlider() {
@@ -88,6 +141,8 @@
 
   /* ---------- 3–5. Catalog: filtering, sorting, view more ---------- */
   var INITIAL_LIMIT = 8; // 8 products + the Custom Grid card = 9 cards (3 × 3), as in Figma
+  var INITIAL_LIMIT_MOBILE = 4; // Figma "Home — mobile 360" shows 4 products before "View more"
+  var catalogMobileMQ = window.matchMedia('(max-width: 768px)');
 
   function initCatalog() {
     var grid = document.querySelector('[data-product-grid]');
@@ -101,7 +156,8 @@
     var moreWrap = moreBtn ? moreBtn.parentElement : null;
     var status = document.querySelector('[data-catalog-status]');
     var empty = document.querySelector('[data-catalog-empty]');
-    var clearBtn = document.querySelector('[data-filters-clear]');
+    var clearBtns = document.querySelectorAll('[data-filters-clear]');
+    var resultsLabel = document.querySelector('[data-filters-results]');
 
     var state = { expanded: false, sort: 'popular' };
 
@@ -138,35 +194,67 @@
       visible.forEach(function (p) { grid.insertBefore(p, customCard); });
 
       products.forEach(function (p) { p.hidden = true; });
-      visible.forEach(function (p, i) { p.hidden = !state.expanded && i >= INITIAL_LIMIT; });
+      var limit = catalogMobileMQ.matches ? INITIAL_LIMIT_MOBILE : INITIAL_LIMIT;
+      visible.forEach(function (p, i) { p.hidden = !state.expanded && i >= limit; });
 
-      if (moreWrap) moreWrap.hidden = state.expanded || visible.length <= INITIAL_LIMIT;
+      if (moreWrap) moreWrap.hidden = state.expanded || visible.length <= limit;
       if (empty) empty.hidden = visible.length > 0;
       if (status) {
         status.textContent = hasFilters
           ? visible.length + (visible.length === 1 ? ' grid design found' : ' grid designs found')
           : 'All grid designs';
       }
+      // "Show N results" button at the bottom of the filters drawer
+      if (resultsLabel) {
+        resultsLabel.textContent = 'Show ' + visible.length + (visible.length === 1 ? ' result' : ' results');
+      }
+      refreshAnimations();
     }
 
     form.addEventListener('change', function () { state.expanded = false; render(); });
     form.addEventListener('submit', function (e) { e.preventDefault(); });
 
-    if (clearBtn) {
-      clearBtn.addEventListener('click', function () {
+    Array.prototype.forEach.call(clearBtns, function (btn) {
+      btn.addEventListener('click', function () {
         form.querySelectorAll('input[type="checkbox"]').forEach(function (i) { i.checked = false; });
         state.expanded = false;
         render();
       });
-    }
+    });
 
     if (sortSelect) {
-      sortSelect.addEventListener('change', function () { state.sort = sortSelect.value; render(); });
+      sortSelect.addEventListener('change', function () { state.sort = sortSelect.dataset.value; render(); });
     }
 
-    if (moreBtn) {
-      moreBtn.addEventListener('click', function () { state.expanded = true; render(); });
+    // "View more products": fade the new cards in one by one and glide down to the first of them
+    function revealMore() {
+      var shownBefore = products.filter(function (p) { return !p.hidden; });
+      state.expanded = true;
+      render();
+      var newCards = products.filter(function (p) { return !p.hidden && shownBefore.indexOf(p) === -1; });
+      if (!newCards.length || prefersReducedMotion.matches) return;
+
+      newCards.forEach(function (card, i) {
+        card.style.animationDelay = Math.min(i, 5) * 90 + 'ms';
+        card.classList.remove('is-revealed');
+        card.offsetWidth; // restart the animation
+        card.classList.add('is-revealed');
+      });
+
+      // Layout position of the first new card (offsetTop ignores the reveal animation's translate)
+      var headerH = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 0;
+      var top = 0;
+      for (var el = newCards[0]; el; el = el.offsetParent) top += el.offsetTop;
+      top -= headerH + 24;
+      requestAnimationFrame(function () {
+        if (window.PaperMartScroll) window.PaperMartScroll.scrollTo(top, { duration: 1.2 });
+        else window.scrollTo({ top: top, behavior: 'smooth' });
+      });
     }
+
+    if (moreBtn) moreBtn.addEventListener('click', revealMore);
+
+    catalogMobileMQ.addEventListener('change', render);
 
     render();
   }
@@ -181,6 +269,70 @@
         options.hidden = open;
       });
     });
+  }
+
+  /* ---------- 5b. Filters drawer (≤1279px the sidebar filters slide in from the left) ---------- */
+  function initFiltersDrawer() {
+    var openBtn = document.querySelector('[data-filters-open]');
+    var panel = document.querySelector('[data-filters]');
+    var backdrop = document.querySelector('[data-filters-backdrop]');
+    if (!openBtn || !panel || !backdrop) return;
+    var drawerMQ = window.matchMedia('(max-width: 1279px)');
+    var closeBtns = panel.querySelectorAll('[data-filters-close]');
+
+    function focusables() {
+      return Array.prototype.filter.call(
+        panel.querySelectorAll('button, input, [href], [tabindex]:not([tabindex="-1"])'),
+        function (el) { return !el.disabled && el.offsetParent !== null; }
+      );
+    }
+
+    function open() {
+      panel.classList.add('is-open');
+      backdrop.hidden = false;
+      backdrop.offsetHeight; // reflow so the fade-in runs
+      backdrop.classList.add('is-visible');
+      document.documentElement.classList.add('is-drawer-open');
+      openBtn.setAttribute('aria-expanded', 'true');
+      panel.setAttribute('role', 'dialog');
+      panel.setAttribute('aria-modal', 'true');
+      document.addEventListener('keydown', onKeydown);
+      var first = panel.querySelector('[data-filters-close]');
+      if (first) first.focus();
+    }
+
+    function close(returnFocus) {
+      if (!panel.classList.contains('is-open')) return;
+      panel.classList.remove('is-open');
+      backdrop.classList.remove('is-visible');
+      document.documentElement.classList.remove('is-drawer-open');
+      openBtn.setAttribute('aria-expanded', 'false');
+      panel.removeAttribute('role');
+      panel.removeAttribute('aria-modal');
+      document.removeEventListener('keydown', onKeydown);
+      setTimeout(function () { if (!panel.classList.contains('is-open')) backdrop.hidden = true; }, 300);
+      if (returnFocus) openBtn.focus();
+    }
+
+    function onKeydown(e) {
+      if (e.key === 'Escape') { close(true); return; }
+      if (e.key !== 'Tab') return;
+      // keep keyboard focus inside the open drawer
+      var items = focusables();
+      if (!items.length) return;
+      var first = items[0];
+      var last = items[items.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+
+    openBtn.addEventListener('click', open);
+    backdrop.addEventListener('click', function () { close(true); });
+    Array.prototype.forEach.call(closeBtns, function (btn) {
+      btn.addEventListener('click', function () { close(true); });
+    });
+    // Back to the desktop sidebar: drop the drawer state
+    drawerMQ.addEventListener('change', function (e) { if (!e.matches) close(false); });
   }
 
   /* ---------- 6. Form validation (shared by footer enquiry + contact form) ---------- */
@@ -538,7 +690,14 @@
         document.getElementById(t.getAttribute('aria-controls')).hidden = !selected;
       });
       if (focus) tab.focus();
+      // On narrow screens the tab row scrolls sideways: bring the active tab fully into view
+      var nav = tab.parentElement;
+      if (nav.scrollWidth > nav.clientWidth) {
+        var tabLeft = tab.getBoundingClientRect().left - nav.getBoundingClientRect().left + nav.scrollLeft;
+        nav.scrollTo({ left: Math.max(0, tabLeft - (nav.clientWidth - tab.offsetWidth) / 2), behavior: 'smooth' });
+      }
       updateScrollFade();
+      refreshAnimations();
     }
 
     tabs.forEach(function (tab, i) {
@@ -568,6 +727,78 @@
     }
     if (scroller) scroller.addEventListener('scroll', updateScrollFade, { passive: true });
     updateScrollFade();
+  }
+
+  /* ---------- 11b. Dropdown (custom listbox, e.g. review sort) ----------
+     Root [data-dropdown] keeps the chosen value in data-value and fires
+     a "change" event on it, so callers listen like they would on a select. */
+  function initDropdowns() {
+    document.querySelectorAll('[data-dropdown]').forEach(function (root) {
+      var toggle = root.querySelector('[data-dropdown-toggle]');
+      var menu = root.querySelector('[data-dropdown-menu]');
+      var label = root.querySelector('[data-dropdown-label]');
+      var options = Array.prototype.slice.call(menu.querySelectorAll('[role="option"]'));
+
+      function selectedIndex() {
+        for (var i = 0; i < options.length; i++) if (options[i].getAttribute('aria-selected') === 'true') return i;
+        return 0;
+      }
+
+      function open() {
+        if (!menu.hidden) return;
+        menu.hidden = false;
+        toggle.setAttribute('aria-expanded', 'true');
+        options[selectedIndex()].focus();
+        document.addEventListener('pointerdown', onOutside);
+      }
+
+      function close(returnFocus) {
+        if (menu.hidden) return;
+        menu.hidden = true;
+        toggle.setAttribute('aria-expanded', 'false');
+        document.removeEventListener('pointerdown', onOutside);
+        if (returnFocus) toggle.focus();
+      }
+
+      function onOutside(e) {
+        if (!root.contains(e.target)) close(false);
+      }
+
+      function choose(option) {
+        var changed = option.dataset.value !== root.dataset.value;
+        options.forEach(function (o) { o.setAttribute('aria-selected', String(o === option)); });
+        label.textContent = option.textContent;
+        root.dataset.value = option.dataset.value;
+        close(true);
+        if (changed) root.dispatchEvent(new Event('change'));
+      }
+
+      toggle.addEventListener('click', function () {
+        if (menu.hidden) open(); else close(true);
+      });
+      toggle.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); open(); }
+      });
+
+      options.forEach(function (option, i) {
+        option.addEventListener('click', function () { choose(option); });
+        option.addEventListener('keydown', function (e) {
+          var next = { ArrowDown: i + 1, ArrowUp: i - 1, Home: 0, End: options.length - 1 }[e.key];
+          if (next !== undefined) {
+            e.preventDefault();
+            options[Math.min(Math.max(next, 0), options.length - 1)].focus();
+          } else if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            choose(option);
+          } else if (e.key === 'Escape') {
+            e.preventDefault();
+            close(true);
+          } else if (e.key === 'Tab') {
+            close(false);
+          }
+        });
+      });
+    });
   }
 
   /* ---------- 12. Reviews: sorting, show more, write a review ---------- */
@@ -602,9 +833,10 @@
       toggle.parentElement.hidden = reviews.length <= REVIEWS_INITIAL;
       toggle.setAttribute('aria-expanded', String(state.expanded));
       toggleLabel.textContent = state.expanded ? 'Show fewer reviews' : 'Show more reviews';
+      refreshAnimations();
     }
 
-    sortSelect.addEventListener('change', function () { state.sort = sortSelect.value; render(false); });
+    sortSelect.addEventListener('change', function () { state.sort = sortSelect.dataset.value; render(false); });
     toggle.addEventListener('click', function () { state.expanded = !state.expanded; render(state.expanded); });
     render(false);
 
@@ -650,18 +882,206 @@
     });
   }
 
+  /* ---------- 16. Basket page: quantities, totals, clear, discount ---------- */
+  function initBasketPage() {
+    var root = document.querySelector('[data-basket]');
+    if (!root) return;
+    var list = root.querySelector('[data-basket-list]');
+    var empty = root.querySelector('[data-basket-empty]');
+    var clearBtn = root.querySelector('[data-basket-clear]');
+    var checkout = root.querySelector('[data-checkout]');
+    var countLabel = document.querySelector('[data-basket-count-label]');
+    var itemsLabel = root.querySelector('[data-basket-items-label]');
+    var subtotalLabel = root.querySelector('[data-basket-subtotal-label]');
+    var subtotal = root.querySelector('[data-basket-subtotal]');
+    var total = root.querySelector('[data-basket-total]');
+
+    function items() { return Array.prototype.slice.call(list.querySelectorAll('[data-basket-item]')); }
+    function plural(n) { return n + (n === 1 ? ' item' : ' items'); }
+
+    function update() {
+      var count = 0;
+      var sum = 0;
+      items().forEach(function (item) {
+        var input = item.querySelector('[data-basket-qty]');
+        var qty = Math.min(99, Math.max(1, parseInt(input.value, 10) || 1));
+        input.value = qty;
+        // At 1 the minus button removes the item instead of being disabled
+        var minus = item.querySelector('[data-basket-minus]');
+        var name = item.querySelector('.basket-item__title').textContent.trim();
+        minus.setAttribute('aria-label', qty <= 1 ? 'Remove ' + name + ' from basket' : 'Decrease quantity');
+        var line = Math.round(parseFloat(item.dataset.price) * qty * 100) / 100;
+        item.querySelector('[data-basket-line-total]').textContent = formatPrice(line, 'AUD');
+        count += qty;
+        sum += line;
+      });
+      sum = Math.round(sum * 100) / 100;
+      countLabel.textContent = plural(count);
+      itemsLabel.textContent = plural(count) + ' in your basket';
+      subtotalLabel.textContent = 'Subtotal (' + plural(count) + ')';
+      subtotal.textContent = formatPrice(sum, 'AUD');
+      total.textContent = '$' + sum.toFixed(2);
+      var isEmpty = count === 0;
+      empty.hidden = !isEmpty;
+      clearBtn.hidden = isEmpty;
+      checkout.classList.toggle('is-disabled', isEmpty);
+      checkout.setAttribute('aria-disabled', String(isEmpty));
+      updateCart({ count: count, total: sum });
+    }
+
+    // Fade items out, then drop them and recalculate
+    function removeItems(toRemove) {
+      toRemove.forEach(function (item) { item.classList.add('is-removing'); });
+      setTimeout(function () {
+        toRemove.forEach(function (item) { item.remove(); });
+        update();
+        refreshAnimations();
+      }, prefersReducedMotion.matches ? 0 : 300);
+    }
+
+    list.addEventListener('click', function (e) {
+      var btn = e.target.closest('[data-basket-minus], [data-basket-plus]');
+      if (!btn) return;
+      var item = btn.closest('[data-basket-item]');
+      if (item.classList.contains('is-removing')) return;
+      var input = item.querySelector('[data-basket-qty]');
+      var qty = (parseInt(input.value, 10) || 1) + (btn.hasAttribute('data-basket-plus') ? 1 : -1);
+      if (qty < 1) { removeItems([item]); return; }
+      input.value = qty;
+      update();
+    });
+    list.addEventListener('change', function (e) {
+      if (!e.target.matches('[data-basket-qty]')) return;
+      // Typing 0 removes the item too
+      if (parseInt(e.target.value, 10) === 0) removeItems([e.target.closest('[data-basket-item]')]);
+      else update();
+    });
+
+    clearBtn.addEventListener('click', function () { removeItems(items()); });
+
+    // No discount backend yet: validate the field and say so honestly
+    var discount = root.querySelector('[data-discount-form]');
+    var discountMsg = root.querySelector('[data-discount-message]');
+    discount.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var code = discount.elements.code.value.trim();
+      discountMsg.textContent = code ? 'Sorry, “' + code + '” isn’t a valid discount code.' : 'Please enter a discount code.';
+    });
+
+    update();
+  }
+
+  /* ---------- 14. Smooth scrolling (Lenis) ---------- */
+  function initSmoothScroll() {
+    if (typeof Lenis === 'undefined' || prefersReducedMotion.matches) return;
+
+    var lenis = new Lenis({
+      lerp: 0.1,
+      // Hand the wheel to the browser only inside boxes that really scroll on their own right now
+      // (the desktop filters sidebar and header nav are not scroll boxes, so the page keeps gliding there)
+      prevent: function (node) {
+        return node.matches('.filters.is-open, .header.is-menu-open .nav, dialog[open]') ||
+          (node.classList.contains('product-description__scroll') && node.scrollHeight > node.clientHeight + 1);
+      }
+    });
+    window.PaperMartScroll = lenis;
+    function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+
+    // In-page links (#catalog, #paper-weights…) glide to their target below the sticky header
+    document.addEventListener('click', function (e) {
+      var link = e.target.closest('a[href^="#"]');
+      if (!link || e.defaultPrevented) return;
+      var id = link.getAttribute('href');
+      if (id.length < 2) return;
+      var target = document.querySelector(id);
+      if (!target) return;
+      e.preventDefault();
+      var headerH = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 0;
+      lenis.scrollTo(target, { offset: -headerH });
+    });
+
+    // Freeze the page while the filters drawer is open
+    new MutationObserver(function () {
+      if (document.documentElement.classList.contains('is-drawer-open')) lenis.stop(); else lenis.start();
+    }).observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+  }
+
+  /* ---------- 15. Scroll-in animations (AOS) ----------
+     Attributes are set here, so the HTML stays clean. `stagger` delays
+     siblings one after another (in steps of 80ms, max 3 per row). */
+  var ANIMATIONS = [
+    { selector: '.page-hero__content', aos: 'fade-up' },
+    { selector: '.section-title', aos: 'fade-up' },
+    { selector: '.trust-item', aos: 'fade-up', stagger: true },
+    { selector: '.catalog__toolbar', aos: 'fade-up' },
+    { selector: '.product-grid > .product-card', aos: 'fade-up', stagger: true },
+    { selector: '.sidebar-card', aos: 'fade-up' },
+    { selector: '.paper-weight-card', aos: 'fade-up', stagger: true },
+    { selector: '.spec-card', aos: 'fade-up', stagger: true },
+    { selector: '.info-note', aos: 'fade-up' },
+    { selector: '.paper-contact-cta__panel', aos: 'zoom-in-up' },
+    { selector: '.delivery-plan', aos: 'fade-up', stagger: true },
+    { selector: '.order-tracking', aos: 'fade-up' },
+    { selector: '.support-card', aos: 'fade-up', stagger: true },
+    { selector: '.delivery-trust__item', aos: 'fade-up', stagger: true },
+    { selector: '.faq-section', aos: 'fade-up' },
+    { selector: '.faq-support', aos: 'fade-up' },
+    { selector: '.contact-method', aos: 'fade-up', stagger: true },
+    { selector: '.contact-form', aos: 'fade-up' },
+    { selector: '.location-card', aos: 'fade-up', stagger: true },
+    { selector: '.custom-grid-cta__panel', aos: 'zoom-in-up' },
+    { selector: '.product-gallery', aos: 'fade-right' },
+    { selector: '.product-info', aos: 'fade-left' },
+    { selector: '.tabs-card', aos: 'fade-up' },
+    { selector: '.related__carousel', aos: 'fade-up' },
+    { selector: '.policy-hero__banner', aos: 'fade-up' },
+    { selector: '.policy__card', aos: 'fade-up' },
+    { selector: '.basket-items', aos: 'fade-up' },
+    { selector: '.order-summary', aos: 'fade-up', stagger: true },
+    { selector: '.footer__top > *', aos: 'fade-up', stagger: true }
+  ];
+
+  function initAnimations() {
+    if (typeof AOS === 'undefined') return;
+    ANIMATIONS.forEach(function (rule) {
+      document.querySelectorAll(rule.selector).forEach(function (el, i) {
+        el.setAttribute('data-aos', rule.aos);
+        if (rule.stagger && i % 3) el.setAttribute('data-aos-delay', String((i % 3) * 80));
+      });
+    });
+    AOS.init({
+      duration: 700,
+      easing: 'ease-out-cubic',
+      offset: 60,
+      once: true,
+      disable: function () { return prefersReducedMotion.matches; }
+    });
+  }
+
+  // Recalculate positions after content is shown, hidden or reordered
+  function refreshAnimations() {
+    if (typeof AOS === 'undefined' || !document.querySelector('.aos-init')) return;
+    AOS.refresh();
+    window.dispatchEvent(new Event('scroll'));
+  }
+
   /* ---------- 13. You may also like (Swiper) ---------- */
   function initRelatedProductsSwiper() {
     var el = document.querySelector('[data-related-slider]');
     if (!el || typeof Swiper === 'undefined') return;
 
     new Swiper(el, {
-      slidesPerView: 4,
-      spaceBetween: 18,
+      slidesPerView: 1,
+      spaceBetween: 16,
       speed: 600,
       watchOverflow: true,
       navigation: { prevEl: '[data-related-prev]', nextEl: '[data-related-next]' },
-      breakpoints: { 1920: { spaceBetween: 24 } },
+      breakpoints: {
+        769: { slidesPerView: 2, spaceBetween: 24 },
+        1280: { slidesPerView: 4, spaceBetween: 18 },
+        1920: { slidesPerView: 4, spaceBetween: 24 }
+      },
       a11y: { prevSlideMessage: 'Previous products', nextSlideMessage: 'Next products' }
     });
   }

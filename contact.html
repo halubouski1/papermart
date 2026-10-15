@@ -11,10 +11,22 @@
   <link rel="preload" href="assets/images/contact-banner.jpg" as="image">
 
   <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/vendor/aos.css">
+  <link rel="stylesheet" href="css/vendor/lenis.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/media.css">
 </head>
 <body>
+
+  <!-- ============ INFO BAR ============ -->
+  <div class="info-bar" data-info-bar>
+    <div class="info-bar__inner container">
+      <span class="icon icon--truck info-bar__icon" aria-hidden="true"></span>
+      <p class="info-bar__text">Prices include shipping to Australia — no hidden charges or import fees.</p>
+      <a class="info-bar__link" href="delivery.html">Learn more</a>
+      <button class="info-bar__close" type="button" aria-label="Close announcement" data-info-bar-close><span class="icon icon--close" aria-hidden="true"></span></button>
+    </div>
+  </div>
 
   <!-- ============ HEADER ============ -->
   <header class="header">
@@ -23,7 +35,7 @@
         <img src="assets/images/logo-papermart.png" alt="PaperMart, www.papermart.au" width="219" height="52">
       </a>
 
-      <nav class="nav" aria-label="Main navigation">
+      <nav class="nav" id="site-nav" aria-label="Main navigation" data-nav>
         <ul class="nav__list">
           <li><a class="nav__link" href="gridcraft.html">GridCraft</a></li>
           <li><a class="nav__link" href="specifications.html">Specifications</a></li>
@@ -31,6 +43,27 @@
           <li><a class="nav__link" href="faq.html">FAQ</a></li>
           <li><a class="nav__link" href="contact.html" aria-current="page">Contact us</a></li>
         </ul>
+        <div class="nav__extra">
+          <div class="nav__account">
+            <a class="nav__login" href="account.html"><span class="icon icon--user" aria-hidden="true"></span>Login</a>
+            <a class="cart nav__cart" href="cart.html" data-cart aria-label="Shopping cart">
+              <span class="cart__icon">
+                <span class="icon icon--cart" aria-hidden="true"></span>
+                <span class="cart__badge" data-cart-count>2</span>
+              </span>
+              <span class="cart__total" data-cart-total>$89.90 AUD</span>
+            </a>
+          </div>
+          <div class="nav__help">
+            <p class="nav__help-title">Need help?</p>
+            <ul class="nav__contacts">
+              <li><span class="icon icon--whatsapp" aria-hidden="true"></span><a href="https://wa.me/447990660585" target="_blank" rel="noopener">+44 7990 660585 (WhatsApp)</a></li>
+              <li><span class="icon icon--phone" aria-hidden="true"></span><a href="tel:+61280001234">02 8000 1234</a></li>
+              <li><span class="icon icon--mail" aria-hidden="true"></span><a href="mailto:hello@papermart.au">hello@papermart.au</a></li>
+              <li class="nav__hours"><span class="icon icon--clock" aria-hidden="true"></span>Mon – Fri, 8:30am – 5:00pm AEST</li>
+            </ul>
+          </div>
+        </div>
       </nav>
 
       <div class="header__actions">
@@ -45,6 +78,9 @@
           </span>
           <span class="cart__total" data-cart-total>$89.90 AUD</span>
         </a>
+        <button class="header__menu" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav" data-menu-toggle>
+          <span class="icon icon--menu" aria-hidden="true"></span>
+        </button>
       </div>
     </div>
   </header>
@@ -57,7 +93,7 @@
         <img class="page-hero__image contact-hero__image" src="assets/images/contact-banner.jpg" alt="" width="2400" height="1159">
         <div class="page-hero__content">
           <h1 class="contact-hero__title" id="contact-title">Contact Us</h1>
-          <p class="contact-hero__text">We’re here to help. Get in touch with our team<br>for any <strong>questions</strong>, <strong>support</strong> or <strong>custom requests</strong>.</p>
+          <p class="contact-hero__text">We’re here to help. Get in touch with our team <br>for any <strong>questions</strong>, <strong>support</strong> or <strong>custom requests</strong>.</p>
           <div class="contact-hero__topics">
             <p class="contact-hero__label">What can we help you with?</p>
             <ul class="contact-hero__links">
@@ -87,6 +123,9 @@
         </div>
       </div>
     </section>
+
+    <!-- Blueprint grid: from below the banner down to the footer -->
+    <div class="page-grid">
 
     <!-- ============ CONTACT MAIN: FORM + GET IN TOUCH ============ -->
     <section class="contact-main" aria-label="Contact options">
@@ -271,7 +310,7 @@
               <span class="icon-circle custom-grid-cta__icon"><span class="icon icon--ruler" aria-hidden="true"></span></span>
               <h2 class="custom-grid-cta__title" id="custom-grid-title">Need a Custom Grid Design?</h2>
             </div>
-            <p class="custom-grid-cta__text">We can print a grid or graph paper roll to your exact requirements.<br>If you need a specific layout, spacing, colour or measurements,<br>our team can create it for you.</p>
+            <p class="custom-grid-cta__text">We can print a grid or graph paper roll to your exact requirements. <br>If you need a specific layout, spacing, colour or measurements, <br>our team can create it for you.</p>
 
             <ul class="custom-grid-cta__features">
               <li class="feature">
@@ -315,6 +354,7 @@
       </div>
     </section>
 
+    </div>
   </main>
 
   <!-- ============ FOOTER ============ -->
@@ -385,6 +425,8 @@
     </div>
   </footer>
 
+  <script src="js/vendor/aos.js" defer></script>
+  <script src="js/vendor/lenis.min.js" defer></script>
   <script src="js/main.js" defer></script>
 </body>
 </html>
