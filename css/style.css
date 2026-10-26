@@ -29,6 +29,9 @@
   --c-dot: #c9d3e3;
   --c-accent: #5fb0ff;
   --c-bright: #1e7bff;
+  --c-announcement: #d62b2b;
+  --c-gridcraft-blue: #00affe; /* GridCraft wordmark (hero slide): "Grid" */
+  --c-gridcraft-grey: #737172; /* "Craft" */
 
   --font: "Nunito Sans", system-ui, sans-serif;
   --container: 1600px;
@@ -184,32 +187,14 @@ legend { padding: 0; }
 .link-arrow:hover .icon { transform: translateX(3px); }
 
 /* =========================================================
-   INFO BAR (above the header, dismissible)
+   ANNOUNCEMENT BAR (above the header; hidden by main.js when it has no text)
    ========================================================= */
-.info-bar { overflow: hidden; background: var(--c-navy); color: var(--c-white); transition: height .35s var(--ease); }
+.info-bar { background: var(--c-announcement); color: var(--c-white); }
 .info-bar__inner { position: relative; display: flex; align-items: center; justify-content: center; gap: 10px; height: 40px; }
 .info-bar__icon { --icon-size: 16px; }
 .info-bar__text { font-size: 14px; font-weight: 600; line-height: 20px; }
-.info-bar__link { font-size: 14px; font-weight: 700; line-height: 20px; color: var(--c-accent); text-decoration: underline; text-underline-offset: 2px; transition: color .3s var(--ease); }
-.info-bar__link:hover { color: var(--c-white); }
-.info-bar__close {
-  position: absolute;
-  top: 50%;
-  right: -8px; /* icon edge lines up with the container edge */
-  display: grid;
-  place-items: center;
-  width: 32px;
-  height: 32px;
-  padding: 0;
-  border: 0;
-  border-radius: 50%;
-  background: none;
-  color: rgba(255, 255, 255, .7);
-  transform: translateY(-50%);
-  transition: color .3s var(--ease), background-color .3s var(--ease);
-}
-.info-bar__close .icon { --icon-size: 16px; }
-.info-bar__close:hover { color: var(--c-white); background: rgba(255, 255, 255, .1); }
+.info-bar__link { font-size: 14px; font-weight: 700; line-height: 20px; color: var(--c-white); text-decoration: underline; text-underline-offset: 2px; transition: opacity .3s var(--ease); }
+.info-bar__link:hover { opacity: .8; }
 
 /* =========================================================
    HEADER
@@ -257,6 +242,13 @@ legend { padding: 0; }
 }
 .nav__link:hover, .nav__link[aria-current="page"] { color: var(--c-primary); }
 .nav__link:hover::after, .nav__link[aria-current="page"]::after { transform: translateX(-50%) scaleX(1); }
+/* GridCraft: a separate product line, set apart by a divider and its two-tone wordmark colours */
+.nav__sep { font-size: 15px; font-weight: 400; line-height: 20px; color: var(--c-checkbox); user-select: none; }
+.nav__link--gridcraft,
+.nav__link--gridcraft:hover,
+.nav__link--gridcraft[aria-current="page"] { font-size: 17px; font-weight: 800; letter-spacing: 0; text-transform: none; color: var(--c-gridcraft-grey); }
+.nav__link--gridcraft::after { background: var(--c-gridcraft-blue); }
+.nav__gridcraft-grid { color: var(--c-gridcraft-blue); }
 
 .header__actions { display: flex; align-items: center; gap: 28px; }
 .header__login {
@@ -733,11 +725,10 @@ legend { padding: 0; }
 }
 .product-card:hover { border-color: #b9c8e2; transform: translateY(-2px); }
 /* keep the hover lift once AOS has animated the card in (AOS sets its own transform) */
-.product-grid .product-card[data-aos].aos-animate:hover { transform: translateY(-2px); }
 .product-card[hidden] { display: none; }
 /* Cards revealed by "View more products" (delay set per card in main.js) */
 .product-card.is-revealed { animation: card-reveal .6s cubic-bezier(.22, .61, .36, 1) backwards; }
-@keyframes card-reveal { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
+@keyframes card-reveal { from { opacity: 0; } to { opacity: 1; } }
 @media (prefers-reduced-motion: reduce) { .product-card.is-revealed { animation: none; } }
 
 .product-card__media {
@@ -1218,8 +1209,8 @@ legend { padding: 0; }
 
 /* ---------- Hero banner ---------- */
 .faq-hero { --hero-overlay: linear-gradient(90deg, #072a6b 0%, var(--c-primary) 44%, rgba(11, 58, 143, 0) 62%); }
-.faq-hero__banner { height: 420px; background: var(--c-primary); }
-.faq-hero__image { left: auto; width: 900px; }
+.faq-hero__banner { background: var(--c-primary); } /* same height as every other page banner */
+.faq-hero__image { left: auto; width: 900px; -webkit-mask-image: linear-gradient(90deg, transparent, #000 30%); mask-image: linear-gradient(90deg, transparent, #000 30%); } /* soft left edge into the blue */
 .faq-hero__title { font-size: 60px; font-weight: 800; line-height: 68px; letter-spacing: -.015em; }
 .faq-hero__text { margin-top: 16px; font-size: 21px; font-weight: 600; line-height: 32px; color: rgba(255, 255, 255, .9); }
 

@@ -47,8 +47,6 @@
   .info-bar__text,
   .info-bar__link { font-size: 10.5px; line-height: 15px; }
   .info-bar__link { text-underline-offset: 1.5px; }
-  .info-bar__close { right: -6px; width: 24px; height: 24px; }
-  .info-bar__close .icon { --icon-size: 12px; }
 
   /* ---------- Header ---------- */
   .header__logo img { width: 164.25px; height: 39px; }
@@ -56,6 +54,10 @@
   .nav__list { gap: 33px; }
   .nav__link { padding-bottom: 8.25px; margin-bottom: -8.25px; font-size: 11.25px; line-height: 15px; }
   .nav__link::after { width: 18px; height: 2.25px; border-radius: 1.5px; }
+  .nav__sep { font-size: 11.25px; line-height: 15px; }
+  .nav__link--gridcraft,
+  .nav__link--gridcraft:hover,
+  .nav__link--gridcraft[aria-current="page"] { font-size: 12.75px; }
 
   .header__actions { gap: 21px; }
   .header__login { gap: 6px; font-size: 11.25px; line-height: 15px; }
@@ -350,7 +352,6 @@
      FAQ PAGE
      ========================================================= */
   /* Hero banner */
-  .faq-hero__banner { height: 315px; }
   .faq-hero__image { width: 675px; }
   .faq-hero__title { font-size: 45px; line-height: 51px; }
   .faq-hero__text { margin-top: 12px; font-size: 15.75px; line-height: 24px; }
@@ -729,10 +730,6 @@
   :root { --header-h: 80px; }
   .container { padding-inline: 32px; }
 
-  /* ---------- Info bar ---------- */
-  .info-bar__inner { padding-right: 48px; }
-  .info-bar__close { right: 24px; }
-
   /* ---------- Header + collapsible menu ---------- */
   .header__inner { position: relative; }
   .header__logo img { width: 168px; height: 40px; }
@@ -787,6 +784,10 @@
     -webkit-mask: url("../assets/icons/chevron-right.svg") center / contain no-repeat;
             mask: url("../assets/icons/chevron-right.svg") center / contain no-repeat;
   }
+  .nav__sep { display: none; }
+  .nav__link--gridcraft,
+  .nav__link--gridcraft:hover,
+  .nav__link--gridcraft[aria-current="page"] { font-size: 18px; }
   .nav__extra { display: block; max-width: 520px; margin-top: 24px; }
   .nav__account { display: flex; gap: 12px; }
   .nav__login {
@@ -1274,12 +1275,11 @@
   .container { padding-inline: 16px; }
 
   /* ---------- Info bar: text wraps, link inline ---------- */
-  .info-bar__inner { display: block; height: auto; padding: 10px 44px 10px 40px; font-size: 13px; line-height: 18px; }
+  .info-bar__inner { display: block; height: auto; padding: 10px 16px 10px 40px; font-size: 13px; line-height: 18px; }
   .info-bar__icon { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); }
   .info-bar__text,
   .info-bar__link { display: inline; font-size: 13px; line-height: 18px; }
   .info-bar__link { margin-left: 4px; }
-  .info-bar__close { right: 8px; }
 
   /* ---------- Header ---------- */
   .header__logo img { width: 135px; height: 32px; }
@@ -1446,7 +1446,7 @@
     padding: 28px 20px 204px;
     --hero-overlay: linear-gradient(180deg, var(--c-primary) calc(100% - 180px), rgba(11, 58, 143, 0) calc(100% - 99px));
   }
-  .faq-hero__image { inset: auto 0 0 0; width: 100%; height: 180px; object-position: 50% 60%; }
+  .faq-hero__image { inset: auto 0 0 0; width: 100%; height: 180px; object-position: 50% 60%; -webkit-mask-image: none; mask-image: none; }
   .faq-hero__title { font-size: 30px; line-height: 34px; }
   .faq-hero__text { max-width: none; margin-top: 16px; font-size: 16px; line-height: 24px; }
 

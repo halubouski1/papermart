@@ -6,8 +6,8 @@ Static HTML/CSS/JS site built from Figma, page by page. No build step, no framew
 
 ```
 index.html  contact.html  faq.html  delivery.html  specifications.html  product.html  cart.html  returns.html  terms.html  privacy.html
-css/normalize.css   css/style.css   css/media.css   css/vendor/{swiper-bundle.min,aos,lenis}.css
-js/main.js          js/vendor/{swiper-bundle.min,aos,lenis.min}.js   (AOS 2.3.4, Lenis 1.1.13)
+css/normalize.css   css/style.css   css/media.css   css/vendor/{swiper-bundle.min,lenis}.css
+js/main.js          js/vendor/{swiper-bundle.min,lenis.min}.js   (Lenis 1.1.13)
 assets/fonts  assets/icons  assets/images
 ```
 
@@ -64,9 +64,11 @@ All pages now have tablet + mobile layouts. Pages marked "todo" (none left) woul
 - Blueprint grid background: every page wraps everything between the banner (or the header, on Product and Cart) and the footer in `<div class="page-grid">`. The grid (`grid-pattern.svg`, 48px cells) lives only on `.page-grid`, shifted down half a cell (`0 24px`, laptop `0 18px`) so it opens with vertical lines. Sections inside must stay transparent (no `background: var(--c-bg)`); blue trust strips keep their own background. Spacing under a banner goes on `.X-hero + .page-grid` (padding-top), not on the hero, so the grid always starts at the banner edge.
 - Header menu button (`[data-menu-toggle]`) collapses the nav at ≤1279px. The open menu (Figma "Menu (open) — tablet 1024", 265:1500) shows 58px link rows with chevrons plus `.nav__extra` (Login + cart row, "Need help?" contacts); `.nav__extra` is hidden on desktop.
 - Home catalog ≤1279px: the sidebar `aside` is `display: contents`; the filters form becomes a slide-in drawer (`initFiltersDrawer`, `[data-filters-open]` / `[data-filters-close]` / `[data-filters-backdrop]`), and the help + delivery cards move below the product grid (CSS `order`).
-- The info bar's closed state is stored in sessionStorage `pm-info-bar-closed` (hidden for the current browser session only; the bar returns on the next visit). The old permanent localStorage flag is cleared on load.
+- Announcement bar (`[data-info-bar]`, red `--c-announcement`): no close button. It shows only while `.info-bar__text` has text; to switch the announcement off, empty that text (or delete the bar) on all ten pages, and `initInfoBar` removes the bar.
+- Header nav: GridCraft is a separate product line, so it comes last, after a `|` divider (`.nav__sep`, hidden in the collapsed menu), as `.nav__link--gridcraft`: mixed case, weight 800, the hero slide's wordmark colours (`--c-gridcraft-blue` for "Grid", `--c-gridcraft-grey` for "Craft").
+- Page banners (`.page-hero__banner`) share one height on every page (520 / laptop 390 / tablet 380); no per-page height overrides. On mobile the height follows the content.
 - Home catalog shows 8 products before "View more" (4 at ≤768px, `INITIAL_LIMIT_MOBILE`).
-- Animations: AOS attributes are set in `main.js` (`ANIMATIONS` list: selector → effect, optional stagger), not in the HTML. Call `refreshAnimations()` after content is shown/hidden/reordered. Nothing inside tabs or sliders is animated. Respects prefers-reduced-motion.
+- No scroll-in animations: the client asked for the AOS slide-in effect to be removed (Oct 2026). Don't add it back. Cards revealed by "View more" only fade in.
 - Smooth scroll: Lenis (`initSmoothScroll`, instance on `window.PaperMartScroll`). In-page `#` links scroll below the sticky header; inner scroll areas get `data-lenis-prevent`; Lenis stops while the filters drawer is open.
 - Policy pages (`returns.html`, `terms.html`, `privacy.html`): `.policy-hero` gradient banner + `.policy__card` with `.policy__section` / `.policy__list` / `.policy__note`.
 - Basket page (`initBasketPage`): line items carry `data-price`; +/- and typed quantities recalculate line totals, subtotal, total and the header cart; minus at quantity 1 (or typing 0) removes the item; "Clear basket" shows the empty state and disables checkout; discount codes have no backend yet (message only). On mobile each item is a grid (thumb + info, then quantity + line total). Item options are separate spans: "·" separators on desktop, one per line on tablet.

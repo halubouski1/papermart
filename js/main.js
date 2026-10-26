@@ -23,29 +23,18 @@
     initRelatedProductsSwiper();
     initBasketPage();
     initSmoothScroll();
-    initAnimations();
   });
 
   var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-  /* ---------- 0. Info bar: dismissible for the current browser session only ---------- */
-  var INFO_BAR_KEY = 'pm-info-bar-closed';
-
+  /* ---------- 0. Announcement bar: shown only while it has text ----------
+     To switch the announcement off, empty `.info-bar__text` (or delete the bar). */
   function initInfoBar() {
     var bar = document.querySelector('[data-info-bar]');
     if (!bar) return;
-    var closed = false;
-    try { localStorage.removeItem(INFO_BAR_KEY); } catch (e) { /* old permanent flag; storage unavailable */ }
-    try { closed = sessionStorage.getItem(INFO_BAR_KEY) === '1'; } catch (e) { /* storage unavailable */ }
-    if (closed) { bar.remove(); return; }
-
-    bar.querySelector('[data-info-bar-close]').addEventListener('click', function () {
-      try { sessionStorage.setItem(INFO_BAR_KEY, '1'); } catch (e) { /* storage unavailable */ }
-      bar.style.height = bar.offsetHeight + 'px';
-      bar.offsetHeight; // force reflow so the collapse animates
-      bar.style.height = '0px';
-      bar.addEventListener('transitionend', function () { bar.remove(); }, { once: true });
-    });
+    var text = bar.querySelector('.info-bar__text');
+    if (!text || !text.textContent.trim()) bar.remove();
+    try { localStorage.removeItem('pm-info-bar-closed'); } catch (e) { /* old "closed" flag; storage unavailable */ }
   }
 
   /* ---------- Header menu (nav collapses ≤1279px) ---------- */
@@ -208,7 +197,6 @@
       if (resultsLabel) {
         resultsLabel.textContent = 'Show ' + visible.length + (visible.length === 1 ? ' result' : ' results');
       }
-      refreshAnimations();
     }
 
     form.addEventListener('change', function () { state.expanded = false; render(); });
@@ -697,7 +685,6 @@
         nav.scrollTo({ left: Math.max(0, tabLeft - (nav.clientWidth - tab.offsetWidth) / 2), behavior: 'smooth' });
       }
       updateScrollFade();
-      refreshAnimations();
     }
 
     tabs.forEach(function (tab, i) {
@@ -833,7 +820,6 @@
       toggle.parentElement.hidden = reviews.length <= REVIEWS_INITIAL;
       toggle.setAttribute('aria-expanded', String(state.expanded));
       toggleLabel.textContent = state.expanded ? 'Show fewer reviews' : 'Show more reviews';
-      refreshAnimations();
     }
 
     sortSelect.addEventListener('change', function () { state.sort = sortSelect.dataset.value; render(false); });
@@ -935,7 +921,6 @@
       setTimeout(function () {
         toRemove.forEach(function (item) { item.remove(); });
         update();
-        refreshAnimations();
       }, prefersReducedMotion.matches ? 0 : 300);
     }
 
@@ -1005,65 +990,6 @@
     new MutationObserver(function () {
       if (document.documentElement.classList.contains('is-drawer-open')) lenis.stop(); else lenis.start();
     }).observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
-  }
-
-  /* ---------- 15. Scroll-in animations (AOS) ----------
-     Attributes are set here, so the HTML stays clean. `stagger` delays
-     siblings one after another (in steps of 80ms, max 3 per row). */
-  var ANIMATIONS = [
-    { selector: '.page-hero__content', aos: 'fade-up' },
-    { selector: '.section-title', aos: 'fade-up' },
-    { selector: '.trust-item', aos: 'fade-up', stagger: true },
-    { selector: '.catalog__toolbar', aos: 'fade-up' },
-    { selector: '.product-grid > .product-card', aos: 'fade-up', stagger: true },
-    { selector: '.sidebar-card', aos: 'fade-up' },
-    { selector: '.paper-weight-card', aos: 'fade-up', stagger: true },
-    { selector: '.spec-card', aos: 'fade-up', stagger: true },
-    { selector: '.info-note', aos: 'fade-up' },
-    { selector: '.paper-contact-cta__panel', aos: 'zoom-in-up' },
-    { selector: '.delivery-plan', aos: 'fade-up', stagger: true },
-    { selector: '.order-tracking', aos: 'fade-up' },
-    { selector: '.support-card', aos: 'fade-up', stagger: true },
-    { selector: '.delivery-trust__item', aos: 'fade-up', stagger: true },
-    { selector: '.faq-section', aos: 'fade-up' },
-    { selector: '.faq-support', aos: 'fade-up' },
-    { selector: '.contact-method', aos: 'fade-up', stagger: true },
-    { selector: '.contact-form', aos: 'fade-up' },
-    { selector: '.location-card', aos: 'fade-up', stagger: true },
-    { selector: '.custom-grid-cta__panel', aos: 'zoom-in-up' },
-    { selector: '.product-gallery', aos: 'fade-right' },
-    { selector: '.product-info', aos: 'fade-left' },
-    { selector: '.tabs-card', aos: 'fade-up' },
-    { selector: '.related__carousel', aos: 'fade-up' },
-    { selector: '.policy-hero__banner', aos: 'fade-up' },
-    { selector: '.policy__card', aos: 'fade-up' },
-    { selector: '.basket-items', aos: 'fade-up' },
-    { selector: '.order-summary', aos: 'fade-up', stagger: true },
-    { selector: '.footer__top > *', aos: 'fade-up', stagger: true }
-  ];
-
-  function initAnimations() {
-    if (typeof AOS === 'undefined') return;
-    ANIMATIONS.forEach(function (rule) {
-      document.querySelectorAll(rule.selector).forEach(function (el, i) {
-        el.setAttribute('data-aos', rule.aos);
-        if (rule.stagger && i % 3) el.setAttribute('data-aos-delay', String((i % 3) * 80));
-      });
-    });
-    AOS.init({
-      duration: 700,
-      easing: 'ease-out-cubic',
-      offset: 60,
-      once: true,
-      disable: function () { return prefersReducedMotion.matches; }
-    });
-  }
-
-  // Recalculate positions after content is shown, hidden or reordered
-  function refreshAnimations() {
-    if (typeof AOS === 'undefined' || !document.querySelector('.aos-init')) return;
-    AOS.refresh();
-    window.dispatchEvent(new Event('scroll'));
   }
 
   /* ---------- 13. You may also like (Swiper) ---------- */
