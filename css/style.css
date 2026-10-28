@@ -249,6 +249,7 @@ legend { padding: 0; }
 .nav__link--gridcraft[aria-current="page"] { font-size: 17px; font-weight: 800; letter-spacing: 0; text-transform: none; color: var(--c-gridcraft-grey); }
 .nav__link--gridcraft::after { background: var(--c-gridcraft-blue); }
 .nav__gridcraft-grid { color: var(--c-gridcraft-blue); }
+.nav__home[hidden] { display: none; } /* "Home" is hidden on the homepage itself */
 
 .header__actions { display: flex; align-items: center; gap: 28px; }
 .header__login {
@@ -804,6 +805,10 @@ legend { padding: 0; }
 .footer__links { display: flex; flex-direction: column; gap: 16px; }
 .footer__links a { font-size: 16px; font-weight: 500; line-height: 22px; color: var(--c-text); transition: color .3s var(--ease); }
 .footer__links a:hover { color: var(--c-primary); }
+/* GridCraft: separate product line, set off by a divider, in its wordmark colours */
+.footer__links-gridcraft { padding-top: 16px; border-top: 1px solid var(--c-border); }
+.footer__links .footer__gridcraft { font-weight: 800; color: var(--c-gridcraft-grey); transition: opacity .3s var(--ease); }
+.footer__links .footer__gridcraft:hover { color: var(--c-gridcraft-grey); opacity: .8; }
 
 .footer__contacts { display: flex; flex-direction: column; gap: 16px; }
 .footer__contacts li { display: flex; align-items: center; gap: 12px; font-size: 16px; line-height: 22px; }

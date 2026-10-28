@@ -221,6 +221,7 @@
   .footer__col--help { flex-basis: 255px; }
   .footer__heading { font-size: 10.5px; line-height: 14.25px; }
   .footer__links { gap: 12px; }
+  .footer__links-gridcraft { padding-top: 12px; }
   .footer__links a { font-size: 12px; line-height: 16.5px; }
 
   .footer__contacts { gap: 12px; }
